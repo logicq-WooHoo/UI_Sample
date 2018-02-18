@@ -1,0 +1,86 @@
+{
+    "userTemplateId": null,
+    "reportConfiguration": null,
+    "metrics": [
+        {
+            "counterId": 117498312,
+            "counterUnit": "times",
+            "counterDescription": "Pending",
+            "aggregationType": "SUM",
+            "displayName": "S1 Setup Req"
+        },
+        {
+            "counterId": 117498313,
+            "counterUnit": "times",
+            "counterDescription": "Pending",
+            "aggregationType": "SUM",
+            "displayName": "SAE bear Succ"
+        }
+    ],
+    "response": [
+        {
+            "events": [
+                {
+                    "117498312": 76,
+                    "117498313": 68,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T20:40:00.000Z"
+                },
+                {
+                    "117498312": 6,
+                    "117498313": 12,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T20:55:00.000Z"
+                },
+                {
+                    "117498312": 75,
+                    "117498313": 1,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T21:10:00.000Z"
+                },
+                {
+                    "117498312": 81,
+                    "117498313": 57,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T21:25:00.000Z"
+                },
+                {
+                    "117498312": 37,
+                    "117498313": 17,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T21:40:00.000Z"
+                },
+                {
+                    "117498312": 56,
+                    "117498313": 45,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T21:55:00.000Z"
+                },
+                {
+                    "117498312": 15,
+                    "117498313": 8,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T22:10:00.000Z"
+                },
+                {
+                    "117498312": 6,
+                    "117498313": 40,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T22:25:00.000Z"
+                },
+                {
+                    "117498312": 51,
+                    "117498313": 92,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T22:40:00.000Z"
+                },
+                {
+                    "117498312": 39,
+                    "117498313": 4,
+                    "SubElement": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1",
+                    "timestamp": "2017-09-11T22:55:00.000Z"
+                }
+            ]
+        }
+    ]
+}

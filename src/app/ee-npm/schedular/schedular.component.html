@@ -1,0 +1,285 @@
+<div class="schedule-report tabHolder" modalClickOutside id="scheduleReport" *ngIf="!displayScheduledReports">
+  <span class="arrow"></span>
+  <h3>Scheduled Report</h3>
+  <div class="form-horizontal">
+    <div class=" main-container">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" [ngClass]="{'active' :  showActive=='scheduling'}">
+          <a class="nav-link" [ngClass]="{'active' :  showActive=='scheduling'}" (click)="showActive='scheduling'" data-toggle="tab"
+            href="#scheduling" role="tab">Scheduling</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active' :  showActive=='email'}">
+          <a class="nav-link" data-toggle="tab" href="#email" [ngClass]="{'active' :  showActive=='email'}" (click)="showActive='email'"
+            role="tab">Email</a>
+        </li>
+      </ul>
+      <form class="form-horizontal" validate [formGroup]="schedularForm">
+        <div class="tab-content">
+          <div class="tab-panel" [ngClass]="{'active' :  showActive=='scheduling'}" id="scheduling" [hidden]="showActive!='scheduling'">
+
+            <div class="row">
+              <div class="custom-form">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control form-control-no" [ngClass]="commonFieldErrorUtilService.displayFieldCss('Name')" formControlName="Name"
+                      required>
+                    <span class="bar"></span>
+                    <label>Name</label>
+                    <app-field-error-display [displayError]="Name.invalid && (Name.dirty || Name.touched)" [errorMsg]="'Task name is mandatory'"></app-field-error-display>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-6 dropdown">
+                        <input type="text" class="form-control form-control-no dropdown" [ngClass]="commonFieldErrorUtilService.displayFieldCss('scheduleType')"
+                          formControlName="scheduleType" required>
+                        <div class="drop-list drop-items hide">
+                          <ul>
+                            <li *ngFor="let scheduleType of shedularFormModel.scheduleTypeList" (mousedown)="schedularForm.controls['scheduleType'].setValue(scheduleType)">{{scheduleType}}</li>
+                          </ul>
+                        </div>
+                        <span class="bar"></span>
+                        <label>Frequency</label>
+                        <app-field-error-display [displayError]="scheduleType.invalid && (scheduleType.dirty || scheduleType.touched)" [errorMsg]="'Frequency is mandatory'"></app-field-error-display>
+                      </div>
+                      <div class="col-md-6 dropdown" [hidden]="schedularForm.controls['scheduleType'].value != 'Daily'">
+                        <input type="text" class="form-control form-control-no dropdown" [ngClass]="commonFieldErrorUtilService.displayFieldCss('hourValue')"
+                          formControlName="hourValue" required>
+                        <div class="drop-list drop-items hide">
+                          <ul>
+                            <li *ngFor="let option of shedularFormModel.hourOptions" (mousedown)="schedularForm.controls['hourValue'].setValue(option)">{{option}}</li>
+                          </ul>
+                        </div>
+                        <span class="bar"></span>
+                        <label>Every</label>
+                        <app-field-error-display [displayError]="hourValue.invalid && (hourValue.dirty || hourValue.touched)" [errorMsg]="'This field is mandatory'"></app-field-error-display>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6 dropdown">
+                    <input type="text" class="form-control form-control-no dropdown" [ngClass]="commonFieldErrorUtilService.displayFieldCss('fileType')"
+                      formControlName="fileType" required>
+                    <div class="drop-list drop-items hide">
+                      <ul>
+                        <li *ngFor="let fileType of shedularFormModel.FileTypeList" (mousedown)="schedularForm.controls['fileType'].setValue(fileType)">{{fileType}}</li>
+                      </ul>
+                    </div>
+                    <span class="bar"></span>
+                    <label>File Type</label>
+                    <app-field-error-display [displayError]="fileType.invalid && (fileType.dirty || fileType.touched)" [errorMsg]="'File Type is mandatory'"></app-field-error-display>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-9">
+                    <button type="button" class="btn btn-default" data-dismiss="schedule-report" (click)="CancelSchedule($event)" id="schedulerCancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" href="#email" data-toggle="tab" (click)="showActive='email';" role="tab">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" [ngClass]="{'active' :  showActive=='email'}" id="email" [hidden]="showActive!='email'">
+            <div class="row">
+              <div class="custom-form col-md-12">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control form-control-no" [ngClass]="commonFieldErrorUtilService.displayFieldCss('toValue')"
+                      formControlName="toValue" required>
+                    <span class="bar"></span>
+                    <label>To</label>
+                    <app-field-error-display [displayError]="toValue.invalid && (toValue.dirty || toValue.touched)" [errorMsg]="'This field is mandatory'"></app-field-error-display>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control form-control-no" formControlName="ccValue">
+                    <span class="bar"></span>
+                    <label>cc</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control form-control-no" formControlName="subjectValue">
+                    <span class="bar"></span>
+                    <label>Subject</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9">
+                <button type="button" class="btn btn-default closeButton" (click)="CancelSchedule($event)" id="schedulerCancel">Cancel</button>
+                <button type="button" class="btn btn-primary" id="schedulerSave" [disabled]="checkFormValidation()" (click)="scheduleReport($event)"><i style="color:#fff;margin-top:2px;display:none;"  class="pull-right fa fa-spinner fa-pulse fa-1x "></i>Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="displayScheduledReports" class="col-md-12">
+
+
+  <div class="schedule-report-details" [formGroup]="scheduledReportsFormParent">
+    <div formArrayName="reports" *ngFor="let data of scheduledReportsFormParent.controls['reports'].controls;let i=index;">
+      <div *ngIf="i%2==1 then scheduledReports ; else scheduledReports">
+      </div>
+    <ng-template #scheduledReports>
+     <div class="panel-group" style="width:50%;padding:0 15px;" [style.float]="i%2==1 ? 'right' : 'left'" > 
+      <div class="panel panel-default">
+    
+      <div [formGroupName]="i">
+        <div class="panel-heading"  [@headingAnimation]="data.value?.isCollapsed" [ngClass]="{'active' :  !data.value?.isCollapsed}">
+          <a class="title-link collapsed" data-toggle="collapse" [id]="'anchor'+data.value?.taskId" data-parent="#accordion" [attr.href]="'#'+data.value?.taskId" (click)="setFormValue(data,'isCollapsed','toggle');setFormValue(data,'isEditable',false);setFormValue(data,'displaySaveIcon',false);">
+            <span class="icon-16 arw"></span>
+            <h4 class="panel-title"><strong>{{ data.get('taskName').value}}</strong> <span>( Task Type  :  {{data.get('taskType').value}} ,  File Type : {{  data.get('taskParamValue').value?.fileType}})</span></h4>
+          </a>
+          <ul class="pull-right panel-menu" *ngIf="data.value">
+            <li><a data-parent="#accordion" (click)="setFormValue(data,'isEditable','toggle');">
+            <span class="icon-16 icon-edit" title="Edit"></span>
+            </a>
+            </li>
+            <li> <a [attr.href]="'#confirmBox'" (click)="setDeletedTask(data,i)" data-toggle="modal">
+          <span class="icon-16 icon-delete" title="Delete"></span>
+        </a></li>
+
+            <li *ngIf="data.value?.displaySaveIcon"> <a (click)="updateScheduleTask(data , i);">
+            <span class="icon-16 icon-save" title="Save"></span>
+          </a></li>
+          </ul>
+        </div>
+        <div [attr.id]="data.value?.taskId" class="panel-collapse collapse">
+          <div [@collapseAnimation]="data.value?.isCollapsed" class="panel-body">
+
+
+            <div class="custom-form"  *ngIf="!data.value?.isCollapsed">
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-no" [ngClass]="commonFieldArrayErrorUtilService.displayFieldCss('taskName',i,'reports')" formControlName="taskName"  (ngModelChange)="setFormValue(data,'displaySaveIcon',true);" required>
+                        <span class="bar"></span>
+                        <label>Name</label>
+                        <app-field-error-display [displayError]="commonFieldArrayErrorUtilService.isFieldValid('taskName',i,'reports')" [errorMsg]="'Task Name is mandatory'"></app-field-error-display>
+                      </div>
+
+                     <div class="col-md-4" formGroupName="taskParamValue">
+                        <div class="col-md-6 dropdown">
+                          <input type="text" class="form-control form-control-no dropdown" formControlName="fileType" (focus)="showDropdown($event);"
+                             (ngModelChange)="setFormValue(data,'displaySaveIcon',true);" (blur)="hideDropdown($event);" [ngClass]="commonFieldArrayErrorUtilService.displayFieldCss('taskParamValue.fileType',i,'reports')"
+                            required>
+                          <div class="drop-list drop-items hide">
+                            <ul>
+                              <li *ngFor="let fileType of shedularFormModel.FileTypeList" (mousedown)="setDisplaySaveIcon(data.get('taskParamValue.fileType').value,fileType ,data);setFormValue(data,'taskParamValue',fileType,'fileType');">{{fileType}}</li>
+                            </ul>
+                          </div>
+                          <span class="bar"></span>
+                          <label>File Type</label>
+                           <app-field-error-display [displayError]="commonFieldArrayErrorUtilService.isFieldValid('taskParamValue.fileType',i,'reports')" [errorMsg]="'Task Name is mandatory'"></app-field-error-display>
+                        </div>
+                      </div>
+
+
+                    <div class="col-md-4">
+                      <div class="row">
+                          <div class="col-md-6 dropdown">
+                            <input type="text" class="form-control form-control-no dropdown" formControlName="taskType" (focus)="showDropdown($event);"
+                               (ngModelChange)="setFormValue(data,'displaySaveIcon',true);" (blur)="hideDropdown($event);"
+                              required>
+                            <div class="drop-list drop-items hide">
+                              <ul>
+                                <li *ngFor="let scheduleType of shedularFormModel.scheduleTypeList" (mousedown)="setDisplaySaveIcon(data.value?.taskType ,scheduleType ,data);setFormValue(data,'taskType' ,scheduleType );">{{scheduleType}}</li>
+                              </ul>
+                            </div>
+                            <span class="bar"></span>
+                            <label>Frequency</label>
+                          </div>
+                         <div class="col-md-6 dropdown" [hidden]="data.value?.taskType != 'Daily'">
+                            <input type="text" class="form-control form-control-no dropdown" formControlName="dailytaskHourfrequency" (focus)="showDropdown($event);"
+                             (ngModelChange)="setFormValue(data,'displaySaveIcon',true)" (blur)="hideDropdown($event);"
+                              required>
+                            <div class="drop-list drop-items hide">
+                              <ul>
+                                <li *ngFor="let option of shedularFormModel.hourOptions" (mousedown)="setDisplaySaveIcon(data.value?.dailytaskHourfrequency ,option ,data);setFormValue(data,'dailytaskHourfrequency' ,option );">{{option}}</li>
+                              </ul>
+                            </div>
+                            <span class="bar"></span>
+                            <label>Every</label>
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group space-adj row" formGroupName="taskParamValue">
+                <div class="col-md-12" formGroupName="email">
+                    <div class="row">
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-no" formControlName="to"  (ngModelChange)="setFormValue(data,'displaySaveIcon',true);"
+                                required>
+                              <span class="bar"></span>
+                              <label>To</label>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="col-md-12">
+                                <input type="text" class="form-control form-control-no" formControlName="cc" (ngModelChange)="setFormValue(data,'displaySaveIcon',true);"
+                                  required>
+                                <span class="bar"></span>
+                                <label>cc</label>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-no" formControlName="subject"  (ngModelChange)="setFormValue(data,'displaySaveIcon',true);"
+                                required>
+                              <span class="bar"></span>
+                              <label>Subject</label>
+                            </div>
+                          </div>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+     </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="modal fade" id="confirmBox" style="top:100px;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Report </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+          <p> Do you want to delete the report ? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)=" deleteTask()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,58 @@
+        <div class="custom-form  type-change">
+                    <div class="row">
+                       <div class="col-md-3 mar-top20"  *ngIf="dimensionValue && showFilter">
+                      
+                        </div>
+                      <!-- <div  [ngClass]="dimensionValue && showFilter ? 'col-md-6' : 'col-md-10'"  *ngIf="showChartTypeSelect">
+                        <input type="text" class="form-control form-control-no dropdown" [(ngModel)]="charTy.displayName" required (blur)="hideDropdown($event)" (focus)="showDropdown($event);" >
+                        <!--<span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="element=''"></span>-->
+                      <!--  <div class="drop-items drop-list hide" clickOutside>
+                          <ul class="dropdown-overflow">
+                            <li *ngFor="let element of types"  (mousedown)="changeChartType(element);" >
+                             <label> {{element.displayName}}</label>
+  
+                            </li>
+                          </ul>
+                        </div>
+                        <span class="bar"></span>
+                       </div> -->
+                      
+                    </div>
+            </div>
+                    <div class="" id="viewDimension">
+                    <div class="" *ngIf="dimensionValue && showFilter">
+                      <div class="form-top row">
+                      <div class="col-sm-3 dropdown" *ngFor="let dimension of dimensionKeys;let k=index;">
+                        <!--<div class="form-control form-control-no dropdown dimnesion-button" [attr.name]="'k'" required  (click)="showDropdown($event);" >{{hasEnabled(dimension) && hasEnabled(dimension).length >0 ? hasEnabled(dimension)[0].name+'+'+hasEnabled(dimension).length : dimension }}</div>-->
+                          <div class="counter" style="margin-bottom:0px;" >
+
+                                <a class="counter-groups" [attr.name]="k" (click)="showDropdown($event);" >
+                                <span  class=" {{k}}"   [attr.name]="k"><span class="{{k}}"  [attr.name]="k" *ngIf="hasEnabled(dimension) && hasEnabled(dimension).length >1 ; else dimensi">
+                                  <span class="ellipsis-dimension {{k}} pull-left " [attr.title]="hasEnabled(dimension)[0].name"  [attr.name]="k">{{ hasEnabled(dimension)[0].name }}</span>
+                                  <span class="dimension-length {{k}} " [attr.name]="k">+{{hasEnabled(dimension).length-1}}</span>
+                                </span><ng-template #dimensi><span class="ellipsis-dimension {{k}}" [attr.name]="k" [attr.title]="hasEnabled(dimension)[0].name" *ngIf="hasEnabled(dimension) && hasEnabled(dimension).length ==1 ;else noDimension"> {{ hasEnabled(dimension)[0].name }}</span> <ng-template #noDimension >Select {{dimension}}</ng-template></ng-template>
+                               
+                                </span>
+                                
+                                </a>
+                              </div> 
+                        <!--<span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="element=''"></span>-->
+                        <div class="drop-items drop-list hide" style="width:89%;" clickOutside>
+                          <ul class="dropdown-overflow">
+                            <li *ngFor="let element of dimensions[dimension];let i=index;" (focus)="showDropdown($event);"  (blur)="hideDropdown($event)">
+                               <input class="form-check-input customCheck" type="checkbox" [(ngModel)]="element.showEnable" (change)="changeSeries(dimension,element.showEnable,element);"  [attr.id]="'radio2'+k+i"  />
+                        <label class="form-check-label" [attr.for]="'radio2'+k+i">{{element.name}}</label>
+  
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+  </div>
+  </div>
+
+  <div class="wrapper">
+  <div #chart [id]="'chart'+index"></div>
+</div>
+

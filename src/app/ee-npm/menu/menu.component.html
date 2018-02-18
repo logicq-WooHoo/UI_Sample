@@ -1,0 +1,49 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+  <div class="sidebar-nav" id="left">
+    <ul class="nav" *ngIf="menu">
+      <li *ngFor="let menuLinks of menu ; let j =index;" [ngClass]="checkRouteParam(menuLinks.routing)" class="{{menuLinks.class}}" >
+        <a [ngClass]="checkRouteParam(menuLinks.routing)"   *ngIf="menuLinks.subMenu.length>0 ||menuLinks.id=='1'; else menuClickToggle"     style="cursor:pointer;" routerLinkActive="active">
+          <span [class]="menuLinks.icons"> </span>
+          <span  *ngIf="menuLinks.subMenu.length>0 ||menuLinks.id=='2'" (click)="toggle('#sub-menu-'+j,'ul.expanded',menuLinks.routing)" class="sign" >
+            <i class="icon-white triangle icon-minus" ></i>
+          </span>
+          <span class="lbl" (click)="toggle('#sub-menu-'+j,'ul.expanded',menuLinks.routing)">{{menuLinks.displayName}}</span>
+        </a>
+        <ng-template #menuClickToggle>
+           <a class="checing" [ngClass]="checkRouteParam(menuLinks.routing)"  (click)="toggle('ul.expanded','closeAll',menuLinks.routing )" style="cursor:pointer;" routerLinkActive="active">
+          <span [class]="menuLinks.icons"> </span>
+          <span  *ngIf="menuLinks.subMenu.length>0 ||menuLinks.id=='1'"  class="sign" >
+            <i class="icon-white triangle icon-minus" ></i>
+          </span>
+          <span class="lbl">{{menuLinks.displayName}}</span>
+        </a>
+        </ng-template>
+        <ul *ngIf="menuLinks.subMenu.length>0 ||menuLinks.id=='2' " [attr.id]="'sub-menu-'+j" class="children nav-child  collapsed overflow-div">
+         <li *ngIf="menuLinks.id && menuLinks.id=='2'"> <a [ngClass]="checkRouteParam('/report/createReport')"  style="cursor:pointer;">
+                  <span class="lbl create-report"  [routerLink]="'/report/createReport'" ><i class="icon-16  icon-add-16"></i> <i class="txt-lbl">Create New</i></span>
+             </a>
+         </li>  
+        <li class="item-2 deeper parent dashboards iconPlusSelector" [ngClass]="checkRouteParam(subMenu1.routing)" *ngFor="let subMenu1 of menuLinks.subMenu; let i=index">
+            <a [ngClass]="checkRouteParam(subMenu1.routing)"  style="cursor:pointer;">
+                 <span  class="sign" ><i *ngIf="(subMenu1.subMenu &&subMenu1.subMenu.length>0)"  (click)="toggle('#sub-menu-'+j+'-'+i); "  class="icon-plus icon-white plus-icon"></i></span>
+                  <span class="lbl" *ngIf="subMenu1.routing != '/createReport'" [routerLink]="subMenu1.routing ? '/'+ subMenu1.routing : null" >{{subMenu1.displayName }}</span>
+                   <span class="lbl create-report" [routerLink]="'/createReport'" *ngIf="subMenu1.routing == '/createReport'" ><i class="icon-16  icon-add-16"></i> <i class="txt-lbl">Create New</i></span>
+             </a>
+            <ul class="children nav-child unstyled small collapsed  dashboards" *ngIf="subMenu1.subMenu &&subMenu1.subMenu.length>0"
+              [attr.id]="'sub-menu-'+j+'-'+i">
+              <div>
+                <li *ngFor="let subMenu2 of subMenu1.subMenu" class="item-3 current">
+                  <a class=""  [ngClass]="checkRouteParam(subMenu2.routing)" [routerLink]="subMenu2.routing ? '/'+ subMenu2.routing : null"  routerLinkActive="active">
+                      <span class="lbl">{{subMenu2.displayName}}</span>
+                   </a>
+                </li>
+              </div>
+            </ul>
+          </li>
+         
+      </ul>
+      </li>
+    </ul>
+  </div>
+</div>

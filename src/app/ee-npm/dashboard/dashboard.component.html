@@ -1,0 +1,32 @@
+      <!--<div class="fixed-breadcrumb row">           
+           
+           	<a class="ee-logo"><img src="/assets/images/ee-logo.png"  alt=""></a>
+           	<div class="page-title">
+           	<h2 class="single-line">My Report</h2>
+             <div *ngIf="isDashboardReport"><span >Dashboard</span> 
+             <span>/</span> 
+             <a href="dashboard.html">First Dashboard</a> 
+             <span>/</span> 
+             <a href="dashboard-subfolders.html">
+              Contextual Content</a>
+             </div>
+             </div>
+           	
+           	</div>-->
+
+ <app-breadcrumbs [breadcrumb]="breadcrumbs"></app-breadcrumbs>
+<!--<div class="page-name"><h2 class="page-title">{{dashboardDetails.displayName}}</h2></div>-->
+
+<div class="container-fluid dashboard-container">
+  <div class="row">
+    
+  <div *ngFor="let report of reports; let i = index;" class="col-md-4 dashboard-box subfolder text-center">
+    		<!-- Top heading -->
+           <div class="chart-item card-view shadow">
+              <app-chart-table [name]="report.name" [request]="" [height]="350" [response]="report.response.graph" [showGraph]="report.response ? true :false" [eventData]="report.tableResponse"
+                [menuToggle]="{toggle : menuToggled , class :'col-md-4'}"  [type]="report.response.type" [index]="i+''"></app-chart-table>
+             </div>
+        </div>
+ </div>
+</div>
+

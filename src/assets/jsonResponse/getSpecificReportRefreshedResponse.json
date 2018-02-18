@@ -1,0 +1,39 @@
+                {
+  "userTemplateId": null,
+  "reportConfiguration": null,
+  "metrics": [
+    {
+      "counterId": 117490512,
+      "counterUnit": "times",
+      "counterDescription": "Pending",
+      "aggregationType": "SUM",
+      "displayName": "S1 Setup Req"
+    },
+    {
+      "counterId": 117490519,
+      "counterUnit": "times",
+      "counterDescription": "Pending",
+      "aggregationType": "SUM",
+      "displayName": "SAE bear Succ"
+    },
+    {
+      "counterId": 117490523,
+      "counterUnit": "packet",
+      "counterDescription": "Pending",
+      "aggregationType": "SUM",
+      "displayName": "Uplink Pkt Rec S1 Intf"
+    }
+  ],
+  "response": [
+    {
+      "events": [
+        {
+          "MME001BKTm/Whole System:MME001BKTm_117490523": 31,
+          "MME001BKTm/Whole System:MME001BKTm_117490512": 91,
+          "MME001BKTm/Whole System:MME001BKTm_117490519": 97,
+          "timestamp": "2017-07-20T07:26:00.000Z"
+        }
+      ]
+    }
+  ]
+}

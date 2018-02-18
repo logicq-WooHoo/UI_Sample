@@ -1,0 +1,10 @@
+<div class="col-md-5 dropdown">
+  <input type="text" class="form-control form-control-no dropdown" [(ngModel)]="value" required>
+  <div class="drop-items drop-list hide">
+    <ul>
+      <li *ngFor="let drops of dropList | searchpipe : value : [searchArgument]" (mousedown)="assignValue(drops);"><span *ngIf="objectName==undefined">{{drops}}</span><span *ngIf="drops[objectName]!=undefined">{{drops[objectName]}}</span></li>
+    </ul>
+  </div>
+  <span class="bar"></span>
+  <label>{{label}}</label>
+</div>

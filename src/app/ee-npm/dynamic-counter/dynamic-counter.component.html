@@ -1,0 +1,501 @@
+<div class="page-name">
+<h2 class="page-title">Counter Addition</h2>
+</div>
+
+<div class="main-container">
+  <div class="custom-form">
+    <div class="form-group row adj-space-top">
+      <div class="col-md-4 col-sm-4 dropdown">
+        <input type="text" class="form-control form-control-no dropdown" [(ngModel)]="element" required>
+        <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="element=''"></span>
+        <div class="drop-items drop-list hide">
+          <ul class="dropdown-overflow">
+            <li *ngFor="let element of elements" (focus)="showDropdown($event);" (mousedown)="selectDeviceType(element,$event);" (blur)="hideDropdown($event)">
+              <label>{{element}}</label>
+            </li>
+          </ul>
+        </div>
+        <span class="bar"></span>
+        <label>Device Type</label>
+        <span class="add-error hide">Counter Group<span></span></span>
+      </div>
+      <div class="col-md-4 col-sm-4 dropdown">
+        <input type="text" class="form-control form-control-no dropdown" [(ngModel)]="counterGroup.displayName" required>
+        <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="counterGroup={}"></span>
+        <div class="drop-items drop-list hide">
+          <ul class="dropdown-overflow">
+            <li *ngFor="let cg of deviceTypeModel.counterGroup | searchpipe : counterGroup.displayName : ['displayName']" (focus)="showDropdown($event);" (mousedown)="selectedCounterGroup(cg);"
+              (blur)="hideDropdown($event)">
+              <label>{{cg.displayName}}</label>
+            </li>
+          </ul>
+        </div>
+        <span class="bar"></span>
+        <label>Counter Group</label>
+        <span class="add-error hide">Counter Group<span></span></span>
+     </div>
+   </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs sub-tabs2" role="tablist">
+        <li class="nav-item active ">
+          <a class="nav-link" data-toggle="tab" [class.disabled]="!counterGroup.displayName" id="counterAdditionTab" href="#counterAddition" role="tab">Add Counter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" [class.disabled]="!counterGroup.displayName" href="#counterList" id="counterListTab" (click)="getCounterList();" role="tab">Counters</a>
+        </li>
+      </ul>
+      <div class="tab-content no-space" [hidden]="!counterGroup.displayName" >
+        <div class="tab-pane active" id="counterAddition" role="tabpanel" >
+          <form class="form-horizontal" validate [formGroup]="addCounterForm">
+            <div class="custom-form">
+              <div class="form-group row adj-space-helprow">
+                <div class="col-md-4">
+                  <!--<input type="text" class="form-control form-control-no " formControlName="name" required [ngClass]="{'error-field' :name.invalid && (name.dirty || name.touched)}">-->
+                  <input type="text" class="form-control form-control-no " formControlName="name" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('name')">
+
+                  <span class="bar"></span>
+                  <label>Counter Name</label>
+                  <app-field-error-display [displayError]="name.invalid && (name.dirty || name.touched)" [errorMsg]="'Counter name is mandatory'"></app-field-error-display>
+                  <app-field-error-display [displayError]="name.invalid && (name.dirty || name.touched) && name.errors.pattern" [errorMsg]="'Counter name is invalid. Please remove special characters.'"></app-field-error-display>
+                </div>
+                 <div class="col-md-2">
+                  <input type="text" class="form-control form-control-no " formControlName="id" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('id')">
+                  <span class="bar"></span>
+                  <label>Counter Id</label>
+                  <app-field-error-display [displayError]="commonFieldErrorUtilService.isFieldValid('id')" [errorMsg]="'Id is required.'"></app-field-error-display>
+                </div>
+                <div class="col-md-2">
+                  <input type="text" class="form-control form-control-no " formControlName="unit" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('unit')">
+                  <span class="bar"></span>
+                  <label>Counter Unit</label>
+                  <app-field-error-display [displayError]="unit.invalid && (unit.dirty || unit.touched)" [errorMsg]="'Unit is required.'"></app-field-error-display>
+                </div>
+             </div>
+             <div class="form-group row helprow">
+                <div class="col-md-4">
+                  <div class="alert alert-warning">
+                    <strong>Note:</strong> Please enter name/id mapped for collection.
+                  </div>
+               </div>
+             </div>
+            </div>
+            <div class="form-group row form-table">
+              <div class="" formGroupName="aggregationType">
+                <div class="col-md-8">
+                  <table class="table table-bordered aggregate">
+                    <thead class="thead-default">
+                      <tr>
+                        <th class="text-left"><span class="heading-border pink">Aggregate</span></th>
+                        <th><span class="heading-border">Hourly</span></th>
+                        <th><span class="heading-border">Daily</span></th>
+                        <th><span class="heading-border">Weekly</span></th>
+                        <th><span class="heading-border">Monthly</span></th>
+                        <th><span class="heading-border">Yearly</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-center">
+                        <td class="text-left">Sum</td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="hourSum" [id]="'hrMax'">
+                            <label class="form-check-label" [attr.for]="'hrMax'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="daySum" [id]="'dyMax'">
+                            <label class="form-check-label" [attr.for]="'dyMax'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="weekSum" [id]="'wkMax'">
+                            <label class="form-check-label" [attr.for]="'wkMax'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="monthSum" [id]="'mnMax'">
+                            <label class="form-check-label" [attr.for]="'mnMax'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="yearSum" [id]="'yrMax'">
+                            <label class="form-check-label" [attr.for]="'yrMax'"></label>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr class="text-center">
+                        <td class="text-left">Minimum</td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="hourMin" [id]="'hrMin'">
+                            <label class="form-check-label" [attr.for]="'hrMin'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" formControlName="dayMin" type="checkbox" [id]="'dlMin'">
+                            <label class="form-check-label" [attr.for]="'dlMin'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="weekMin" [id]="'wkMin'">
+                            <label class="form-check-label" [attr.for]="'wkMin'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" formControlName="monthMin" type="checkbox" [id]="'mnMin'">
+                            <label class="form-check-label" [attr.for]="'mnMin'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" formControlName="monthMin" [id]="'yrMin'" type="checkbox" [id]="'yrMin'">
+                            <label class="form-check-label" [attr.for]="'yrMin'"></label>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr class="text-center">
+                        <td class="text-left">Average</td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="hourAvg" [id]="'hrAvg'">
+                            <label class="form-check-label" [attr.for]="'hrAvg'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="dayAvg" [id]="'dayAvg'">
+                            <label class="form-check-label" [attr.for]="'dayAvg'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="weekAvg" [id]="'wkAvg'">
+                            <label class="form-check-label" [attr.for]="'wkAvg'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="monthAvg" [id]="'mnAvg'">
+                            <label class="form-check-label" [attr.for]="'mnAvg'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="yearAvg" [id]="'yrAvg'">
+                            <label class="form-check-label" [attr.for]="'yrAvg'"></label>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr class="text-center">
+                        <td class="text-left">Maximum</td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="hourMax" [id]="'hrSum'">
+                            <label class="form-check-label" [attr.for]="'hrSum'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="dayMax" [id]="'dlSum'">
+                            <label class="form-check-label" [attr.for]="'dlSum'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="weekMax" [id]="'wkSum'">
+                            <label class="form-check-label" [attr.for]="'wkSum'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="monthMax" [id]="'mnSum'">
+                            <label class="form-check-label" [attr.for]="'mnSum'"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox" formControlName="yearMax" [id]="'yrSum'">
+                            <label class="form-check-label" [attr.for]="'yrSum'"></label>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="custom-form">
+              <div class="form-group row adj-space">
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-no " formControlName="description" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('description')">
+                  <span class="bar"></span>
+                  <label>Counter Description</label>
+                  <app-field-error-display [displayError]="description.invalid && (description.dirty || description.touched)" [errorMsg]="'Description  is required.'"></app-field-error-display>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="pull-right">
+                  <a class="more-items btn-space" data-toggle="tab" (click)="gotoTab('counterListTab');">Show all counters</a> <a class="btn btn-primary" [class.disabled]="!addCounterForm.valid">Save</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane" id="counterList" role="tabpanel">
+          <div class="panel-group schedule-report-details">
+     
+                  <div class="serach-category fixed">
+                    <input type="text" class="search-query" placeholder="Search" [(ngModel)]="searchCounter">
+                    <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                  </div>
+        
+            <div class="counters-container" [formGroup]="counterFormParent">
+              <div class="row">
+                
+                <div class="" formArrayName="counters" *ngFor="let counter of counterGroup.counterList | searchpipe : searchCounter :['displayName']; let i = index;">
+                  <div *ngIf="i<12 || showMoreItems" >
+                  <div *ngIf="i%2==0 then counterTemplate ; else counterTemplate">
+                  </div>
+                </div>
+                     <ng-template #counterTemplate>
+                    <div style="width:50%;padding:0 15px;" [style.float]="i%2==0 ? 'right' : 'left'">
+                      <div class="panel panel-default ">
+                        <form #counterForm="ngForm" >
+                          <div class="panel-heading">
+                            <a class="title-link collapsed" data-toggle="collapse" href="{{'#collapse'+i}}" (click)="counter.isCollapse=!counter.isCollapse">
+                              <span class="icon-16 arw-collapsed margin-right10"></span>
+                              <h4 class="panel-title"><strong>{{counter.displayName}}</strong>
+                              </h4>
+                            </a>
+                            <ul class="pull-right panel-menu" *ngIf="counter.isCollapse">
+                              <li>
+                                <span class="icon-16 icon-edit" title="Edit"></span>
+                              </li>
+                              <li>
+                                <span class="icon-16 icon-delete" title="Delete"></span>
+                              </li>
+                              <li>
+                                <span class="icon-16 icon-save" [class.disabled]="getFormValid(i,counter)" title="Save"></span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div [id]="'collapse'+i" class="panel-collapse collapse ">
+                            <div class="panel-body" >
+                              <div class="custom-form" *ngIf="counter.isCollapse">
+                                <div class="form-group row space-adj">
+                                  <div class="col-md-12">
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                        <input type="text" value="" [name]="'displayName'+i" [ngClass]="(displayName.errors && (displayName.dirty || displayName.touched)) ? 'error-field':''"
+                                          class="form-control form-control-no" [(ngModel)]="counter.displayName" #displayName="ngModel" required>
+                                        <span class="bar"></span>
+                                        <label>Name</label>
+                                        <span *ngIf="displayName.errors && (displayName.dirty || displayName.touched)"><span class="add-error error-text">Name is mandatory</span></span>
+                                      </div>
+                                      <div class="col-md-5">
+                                        <input type="text"  class="form-control form-control-no" [name]="'description'+i"  #description="ngModel"
+                                          [(ngModel)]="counter.counterDescription" required>
+                                        <span class="bar"></span>
+                                        <label>Description</label>
+                                             <span *ngIf="description.errors && (description.dirty || description.touched)"><span class="add-error error-text">Description  is mandatory</span></span>
+                                      </div>
+                                         <div class="col-md-3">
+                                        <input type="text" class="form-control form-control-no" [name]="'unit'+i" #unit="ngModel"
+                                          [(ngModel)]="counter.counterUnit" required>
+                                        <span class="bar"></span>
+                                        <label>Unit</label>
+                                         <span *ngIf="unit.errors && (unit.dirty || unit.touched)"><span class="add-error error-text">Unit  is mandatory</span></span>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row" >
+                                <div class="col-md-12">
+                                  <table class="table table-bordered aggregate" *ngIf="counter.isCollapse && counter.aggregation">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th class="text-left"><span class="heading-border pink">Aggregate</span></th>
+                                        <th><span class="heading-border">Hourly</span></th>
+                                        <th><span class="heading-border">Daily</span></th>
+                                        <th><span class="heading-border">Weekly</span></th>
+                                        <th><span class="heading-border">Monthly</span></th>
+                                        <th><span class="heading-border">Yearly</span></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr class="text-center">
+                                        <td class="text-left">Sum</td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.hourSum" [checked]="counter.aggregation.hourSum==1?true:false" [attr.id]="'hrMax'+i">
+                                            <label class="form-check-label" [attr.for]="'hrMax'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.daySum" [checked]="counter.aggregation.daySum==1?true:false" [attr.id]="'dyMax'+i">
+                                            <label class="form-check-label" [attr.for]="'dyMax'+i"></label>
+                                          </div>
+                                        </td>
+                                       
+                                      <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.weekSum" [checked]="counter.aggregation.daySum==1?true:false" [attr.id]="'wkMax'+i">
+                                            <label class="form-check-label" [attr.for]="'wkMax'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.monthSum" [checked]="counter.aggregation.monthSum==1?true:false" [attr.id]="'mnMax'+i">
+                                            <label class="form-check-label" [attr.for]="'mnMax'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.yearSum" [checked]="counter.aggregation.yearSum==1?true:false" [attr.id]="'yrMax'+i">
+                                            <label class="form-check-label" [attr.for]="'yrMax'+i"></label>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      <tr class="text-center">
+                                        <td class="text-left">Minimum</td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.hourMin" [checked]="counter.aggregation.hourMin==1?true:false" [attr.id]="'hrMin'+i">
+                                            <label class="form-check-label" [attr.for]="'hrMin'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" [(ngModel)]="counter.aggregation.dayMin" [checked]="counter.aggregation.dayMin==1?true:false" type="checkbox" [attr.id]="'dlMin'+i">
+                                            <label class="form-check-label" [attr.for]="'dlMin'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.weekMin" [checked]="counter.aggregation.weekMin==1?true:false" [attr.id]="'wkMin'+i">
+                                            <label class="form-check-label" [attr.for]="'wkMin'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.monthMin" [checked]="counter.aggregation.monthMin==1?true:false" [attr.id]="'mnMin'+i">
+                                            <label class="form-check-label" [attr.for]="'mnMin'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle"  [(ngModel)]="counter.aggregation.yearMin" [checked]="counter.aggregation.yearMin==1?true:false"  [attr.id]="'yrMin'+i" type="checkbox" [attr.id]="'yrMin'+i">
+                                            <label class="form-check-label" [attr.for]="'yrMin'+i"></label>
+                                          </div>
+                                        </td>
+                                      </tr>
+
+                                      <tr class="text-center">
+                                        <td class="text-left">Average</td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox"  [(ngModel)]="counter.aggregation.hourAvg" [checked]="counter.aggregation.hourAvg==1?true:false"  [attr.id]="'hrAvg'+i">
+                                            <label class="form-check-label" [attr.for]="'hrAvg'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.dayAvg" [checked]="counter.aggregation.dayAvg==1?true:false"  [attr.id]="'dayAvg'+i">
+                                            <label class="form-check-label" [attr.for]="'dayAvg'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.weekAvg" [checked]="counter.aggregation.weekAvg==1?true:false"  [attr.id]="'wkAvg'+i">
+                                            <label class="form-check-label" [attr.for]="'wkAvg'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox"  [(ngModel)]="counter.aggregation.monthAvg" [checked]="counter.aggregation.monthAvg==1?true:false" [attr.id]="'mnAvg'+i">
+                                            <label class="form-check-label" [attr.for]="'mnAvg'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.yearAvg" [checked]="counter.aggregation.yearAvg==1?true:false"  [attr.id]="'yrAvg'+i">
+                                            <label class="form-check-label" [attr.for]="'yrAvg'+i"></label>
+                                          </div>
+                                        </td>
+                                     </tr>
+                                      <tr class="text-center">
+                                        <td class="text-left">Maximum</td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.hourMax" [checked]="counter.aggregation.hourMax==1?true:false" [attr.id]="'hrSum'+i">
+                                            <label class="form-check-label" [attr.for]="'hrSum'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.dayMax" [checked]="counter.aggregation.dayMax==1?true:false"  [attr.id]="'dlSum'+i">
+                                            <label class="form-check-label" [attr.for]="'dlSum'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.weekMax" [checked]="counter.aggregation.weekMax==1?true:false"   [attr.id]="'wkSum'+i">
+                                            <label class="form-check-label" [attr.for]="'wkSum'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.monthMax" [checked]="counter.aggregation.monthMax==1?true:false"  [attr.id]="'mnSum'+i">
+                                            <label class="form-check-label" [attr.for]="'mnSum'+i"></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input customCheck circle" type="checkbox" [(ngModel)]="counter.aggregation.yearMax" [checked]="counter.aggregation.yearMax==1?true:false"   [attr.id]="'yrSum'+i">
+                                            <label class="form-check-label" [attr.for]="'yrSum'+i"></label>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </ng-template>
+                </div>
+                             <div class="row form-top">
+                            <div class="col-md-12">
+                              <div class="pull-right">
+                                <a (click)="showMoreItems = !showMoreItems"><ng-template #lessItems><span class="more-items" >Show Less Items</span></ng-template><span class="more-items" *ngIf="!showMoreItems && counterGroup.counterList ;else lessItems">Show More Counters</span></a>
+                              </div>
+                            </div>
+                          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

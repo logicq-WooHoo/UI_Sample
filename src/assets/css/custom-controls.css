@@ -1,0 +1,297 @@
+.custom-form input[type=text], .custom-form input[type=password] 	{
+  display:block;
+  border:none;
+  border-bottom:1px solid #dddddd;
+  border-radius:0;
+  padding:5px 0 5px 0;
+  font-size: 14px;
+  color: #2e2e2e;
+  z-index: 2;
+  position: relative;
+  background: transparent;
+}
+
+.custom-form input[type=text].custom, .custom-form input[type=password].custom 	{
+  display:block;
+  border:none;
+  border-bottom:1px solid #dddddd;
+  border-radius:0;
+  padding:5px 0 5px 0;
+  font-size: 14px;
+  color: #828282;
+  z-index: 2100;
+  position: relative;
+  background: transparent;
+}
+
+/*.custom-form input[type=text]:focus { outline:none; }*/
+
+/* LABEL ======================================= */
+.custom-form label 				 {
+  font-size:14px;
+  font-weight:normal;
+  position:absolute;
+  /*pointer-events:none;*/
+  left:15px;
+  top:3px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+  color: #828282;
+  z-index: 1;
+  }
+
+.custom-form label.static {
+  position:static;
+}
+
+/* active state */
+.custom-form  input[type=text]:focus ~ label, .custom-form  input[type=text]:valid ~ label, .custom-form  input[type=text]:disabled ~ label, .custom-form  input[type=password]:focus ~ label, .custom-form  input[type=password]:valid ~ label, .custom-form  input[type=password]:disabled ~ label {
+  top:-20px;
+  font-size:12px;
+  color:#d63181;
+  font-weight:600;
+}
+
+ .custom-form  input[type=text]:disabled ~ label {
+   opacity: 0.8;
+ }
+
+.custom-form .form-label {
+  font-size:13px;
+  color:#192239;
+  font-weight:bold;
+  position: relative;
+}
+
+/* active state */
+.custom-form  input[type=text]:focus {
+  color:#444;
+}
+
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block;     margin-top: 3px;}
+.bar:before, .bar:after 	{
+  content:'';
+  height:1px;
+  width:0;
+  bottom:4px;
+  position:absolute;
+  background:#d63181;
+  /*transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;*/
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+#filterTab .bar {
+  right: 0;
+}
+
+/* active state */
+.custom-form  input[type=text]:focus ~ .bar:before, .custom-form  input[type=text]:focus ~ .bar:after {
+  width:50%;
+}
+
+input.drop-arw {
+	background-image: url(../images/arw.png) !important;
+	background-position:102% -8px;
+	background-repeat:no-repeat;
+}
+.dropdown {
+	position:relative;
+}
+.drop-items {
+	position:absolute;
+	left: 15px;
+	/*top:28px;*/
+  background: #fff;
+  z-index: 26;
+  width: 98%;
+  border:1px solid #c6c6c6;
+	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.10);
+}
+
+.drop-items.up {
+	left: 5px;
+	top: inherit;
+  bottom:25px;
+  z-index: 11;
+}
+
+.drop-items ul.dropdown-overflow {
+	list-style:none;
+	margin:0;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.drop-items ul  li  {
+	list-style:none;
+  margin:0;
+	padding:5px 10px;
+	/*border-bottom:1px solid #ededed;*/
+	cursor:default;
+  color: #55595c;
+  font-size: 90%;
+}
+
+.drop-items ul  li label {
+  font-size: 95%;
+}
+
+.drop-items ul  li::after  {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.drop-items ul  li:hover {
+	background:#e2f0fe;
+	color:#333;
+
+}
+
+.drop-items  li > span{
+  width: 29px;
+  height: 27px;
+  float: left;
+  margin:0 0 0 -7px;
+}
+
+.drop-items  li > label{
+float: left;
+position: static;
+margin: 5px 0 0 3px;
+color: #444;
+}
+
+/* Custome checkboxes -------------- ------------------------- */
+.custom-form .checkboxes > label 	{
+  font-size:13px;
+  font-weight:normal;
+  position:static;
+  color: #512862;
+  font-weight: bold;
+}
+
+.custom-form .checkboxes .custom > ul, ul.custom	{
+  margin-left:5px;
+}
+
+.custom-form .checkboxes .custom > ul li, ul.custom li 	{
+  display: inline-block;
+  margin:0 15px 5px 0;
+}
+
+.checkboxes .custom li span, .checkboxes .custom li label, ul.custom li span, ul.custom li label	{
+  float: left;
+  margin-top: 2px;
+}
+
+.custom-form .checkboxes .custom li label 	{
+  font-size:85%;
+  font-weight:normal;
+  position:static;
+  color: #444;
+  font-weight: normal;
+  margin: 0 0 0 3px;
+}
+
+.form-control:disabled {
+  opacity: 0.7;
+}
+
+.bg-checkbox, .bg-radio-btn {
+ width:20px;
+ height:20px;
+ position:relative;
+}
+
+.bg-checkbox > input, .bg-radio-btn > input {
+ width:20px;
+ height:20px;
+ margin:0 !important;
+ position:absolute;
+ opacity:0;
+}
+
+.bg-checkbox .checkbox-ui, .bg-radio-btn .checkbox-ui {
+ width:20px;
+ height:20px;
+ display:inline-block;
+ background-image:url(../images/check-box-icon.png);
+}
+
+.bg-checkbox {
+ background-position:0 0 !important;
+}
+
+.bg-checkbox > input:checked + .checkbox-ui {
+ background-position:0 -20px !important;
+}
+
+.bg-radio-btn, .bg-radio-btn .checkbox-ui {
+ background-position:0 -40px !important;
+ height:20px;
+}
+
+.bg-radio-btn > input:checked + .checkbox-ui {
+ background-position:0 -60px !important;
+ height:20px;
+}
+
+.checkbox-column label, .checkbox-column .bg-checkbox, .checkbox-column .bg-radio-btn, .checkbox-column span{
+ float:left;
+ margin-right:5px;
+ margin-top:0;
+ position:static;
+}
+.checkbox-column span.text{
+ margin-top:2px;
+}
+
+/* Base for label styling */
+.form-check {
+  margin-bottom: 0;
+}
+
+.innergroup{
+    /*padding-top: 46px;*/
+    padding-left: 28px;
+    font-size: 13px;
+}
+
+/* Counter Drop Items ---- */
+.counter .drop-items {
+  left:0;
+  width:250px;
+}
+.counter .drop-items  li > label {
+  margin: 2px 0 0 5px;
+}
+
+.counter .drop-items ul  li label {
+  font-size: 100%;
+  width: 90%;
+}
+
+.counter .drop-items ul li::before {
+  display: table;
+  content: " ";
+}
+
+.counter .drop-items ul li::after {
+clear: both;
+}
+
+.custom-form .serach-category input[type=text] {
+  border: 1px solid #dddddd;
+  padding: 0 10px;
+}

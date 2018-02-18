@@ -1,0 +1,72 @@
+{
+    "userTemplateId": null,
+    "reportConfiguration": { "configuration":{"type":"Spline","name":"Report 1"}},
+    "kpiMetrics":[
+        {
+            "displayName": "KPI1",
+            "unit": "times"
+        },
+         {
+            "displayName": "KPI2",
+            "unit": "times"
+        }
+
+    ],
+    "metrics": [
+        {
+            "counterId": 117498312,
+            "counterUnit": "times",
+            "counterDescription": "Pending",
+            "aggregationType": "SUM",
+            "displayName": "S1 Setup Req",
+            "aggregationList" : ["SUM","MIN"]
+        },
+        {
+            "counterId": 117498313,
+            "counterUnit": "times",
+            "counterDescription": "Pending",
+            "aggregationType": "SUM",
+            "displayName": "SAE bear Succ",
+            "aggregationList" : ["MIN"]
+        },
+        {
+            "counterId": 117498315,
+            "counterUnit": "times",
+            "counterDescription": "Pending",
+            "aggregationType": "SUM",
+            "displayName": "Net Traffic bear Succ",
+            "aggregationList" : ["MAX"]
+        }
+    ],
+    "response": [
+        {
+            "events": [
+                
+                    {
+                        "SUM_117498312": 1,
+                        "MIN_117498312" :45,
+                        "MIN_117498313": 79,
+                        "MAX_117498315" : 33,
+                        "NodeName": "MME001BKTm",
+                        "timestamp": "2017-09-11T20:40:00.000Z"
+                    },
+                    {
+                        "SUM_117498312": 2,
+                        "MIN_117498312": 77,
+                        "MIN_117498313" : 44,
+                        "MAX_117498315" : 69,
+                        "NodeName": "MME001BKTm",
+                        "timestamp": "2017-09-11T20:55:00.000Z"
+                    },
+                    {
+                        "SUM_117498312": 98,
+                        "MIN_117498312": 5,
+                        "MIN_117498313":9,
+                        "MAX_117498315" : 47,
+                        "NodeName": "MME001BKTm",
+                        "timestamp": "2017-09-11T21:10:00.000Z"
+                    }
+                ]
+            }
+    ]
+}

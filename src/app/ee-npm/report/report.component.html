@@ -1,0 +1,140 @@
+<!-- <h2 class="row page-title" [hidden]="!report.name || report.name.length<0">
+  <div class="pull-left report-name">
+    <div>{{report.name}}</div>
+
+    <div class="report-heading">Device Type : {{report.deviceType}} | Aggregation Granularity : {{ report.granularity}} 
+      | Report Interval : {{report.intervals}}</div>
+  </div>
+  <app-schedular [reportId]="reportId" [resetForm]="resetForm"></app-schedular>
+  <div class="fixed-action active " style="top:72px;">
+    <ul class="action-menu">
+      <li class="action-menu-li">
+        <a class="action-menu-tab" [title]="'scheduleReport'" data-toggle="tab" (click)="resetForm=!resetForm;" href="#scheduleReport"><i class="icon-24 icon-schedule-report"></i></a>
+      </li>
+      <li class="action-menu-li">
+        <a [title]="'exportReport'" (click)="exportReport('CSV')"><i class="icon-24 icon-download-csv"></i></a>
+      </li>
+      <li class="action-menu-li">
+        <a [title]="'exportReport'" (click)="exportReport('PDF')"><i class="icon-24 icon-download-pdf"></i></a>
+      </li>
+      <li class="action-menu-li">
+        <a (click)="getTemplateConfig()" class="enabled toggleNavbar disabled">
+            <i title="Edit Report" class="icon-24 icon-edit"></i>
+         </a>
+      </li>
+      <li class="page-refresh action-menu-li">
+        <a class="toggleNavbar disabled">
+            <i title="Refresh Report" class="icon-24 icon-refresh"></i>
+          </a>
+      </li>
+    </ul>
+</div>
+  <a id="toTop1" title="More Action" [class.collapsed]="isCollapsed" class="fixed-action-menu" style="top:72px;" (click)="showPageAction()">
+  <i class="icon-24 icon-floating"></i></a>
+</h2>
+<section class="main-container reports">
+  <div class="row">
+    <div class="col-md-12">
+    <app-chart-table *ngIf="report" [height]="450" [showGraph]="report.chartResp.showGraph" [response]="report.chartResp" [refreshContinously]="refreshDataContinuously"
+     [menuToggle]="{toggle :menuToggled,class:'col-md-12'}" [eventData]="report.tableResp" [index]="'report'+i" [type]="report.type" [menuToggle]="menuToggle"></app-chart-table>
+    </div>
+  </div>
+</section> -->
+
+           
+           <!--<div class="fixed-breadcrumb row">           
+           
+           	<a class="ee-logo"><img src="/assets/images/ee-logo.png"  alt=""></a>
+           	<div class="page-title">
+           	<h2 class="single-line">My Report</h2>
+             <div *ngIf="isDashboardReport">
+               <span >Dashboard</span> 
+             <span>/</span> 
+             <a href="dashboard.html">First Dashboard</a> 
+             <span>/</span> 
+             <a href="dashboard-subfolders.html">
+              Contextual Content</a>
+             </div>
+             </div>
+           	
+           	</div>-->
+
+ <app-breadcrumbs [breadcrumb]="breadcrumbs"></app-breadcrumbs>
+           	
+         <div class="fixed-tab-nav sm" [ngClass]="{'sm' : !isDashboardReport}">
+            <div class="row">
+           	<div class="col-lg-12 col-sm-12">
+			<ul class="report-items pull-left" *ngIf="isDashboardReport">
+				<li *ngFor="let dashreport of subDashboardReportConfigList"  [ngClass]= "{ 'active' :  dashreport.name == report.name }" >
+        
+					<!--<span class="img"><img src="/assets/images/pie-icon.png" width="16" height="16" alt=""></span>-->
+        
+              <span class="img"  *ngIf="dashreport.response.type=='pie'">  <img  width="16" height="16" src="/assets/images/pie-icon.png"  alt=""></span>
+                <span class="img" *ngIf="dashreport.response.type=='Vertical Bar'"><img   width="16" height="16" src="/assets/images/bar-icon.png"  alt=""></span>
+                <span class="img" *ngIf="dashreport.response.type=='areaspline'"><img   width="16" height="16" src="/assets/images/bar3-icon.png"  alt=""></span>
+                <span class="img" *ngIf="dashreport.response.type=='Spline'" ><img  width="16" height="16" src="/assets/images/bar1-icon.png"  alt=""></span>
+                <span class="img" *ngIf="dashreport.response.type=='Vertical Stacked Bar'" ><img  width="16" height="16" src="/assets/images/bar2-icon.png"  alt=""></span>
+                <span class="img" *ngIf="dashreport.response.type=='Horizontal Bar'"><img   width="16" height="16" src="/assets/images/bar3-icon.png"  alt=""></span>
+               <span class="img" *ngIf="dashreport.response.type=='line'" > <img  width="16" height="16" src="/assets/images/bar-icon.png"  alt=""></span>
+					<span class="lbl"> {{ dashreport.name }}</span>
+				</li>
+				
+		
+				
+      </ul>
+      
+
+      <div class="pull-right" >
+          <ul class="action-menu">
+              <li class="action-menu-li">
+                <a class="action-menu-tab" [title]="'scheduleReport'" data-toggle="tab" (click)="resetForm=!resetForm;" href="#scheduleReport"><i class="icon-24 icon-schedule-report"></i></a>
+              </li>
+              <li class="action-menu-li">
+                <a [title]="'exportReport'" (click)="exportReport('CSV')"><i class="icon-24 icon-download-csv"></i></a>
+              </li>
+              <li class="action-menu-li">
+                <a [title]="'exportReport'" (click)="exportReport('PDF')"><i class="icon-24 icon-download-pdf"></i></a>
+              </li>
+              <li class="action-menu-li">
+                <a (click)="getTemplateConfig()" class="enabled toggleNavbar disabled">
+                    <i title="Edit Report" class="icon-24 icon-edit"></i>
+                 </a>
+              </li>
+              <li class="page-refresh action-menu-li">
+                <a class="toggleNavbar disabled">
+                    <i title="Refresh Report" class="icon-24 icon-refresh"></i>
+                  </a>
+              </li>
+            </ul>
+
+      </div>
+             </div>
+            </div>
+           	</div>
+           
+            <div class="container-fluid dasboard-container top-tab">
+                <div class="row">    
+                    <div class="col-md-12">
+                   	<div class="dashboard-block subfolder ">
+					<!-- Top heading -->
+					
+          <app-schedular [reportId]="reportId" [resetForm]="resetForm"></app-schedular>
+     
+         <!-- <a id="toTop1" title="More Action" [class.collapsed]="isCollapsed" class="fixed-action-menu" style="top:72px;" (click)="showPageAction()">
+          <i class="icon-24 icon-floating"></i></a> -->
+     
+        <section>
+          <div class="row">
+            <div class="col-md-12">
+            <app-chart-table *ngIf="report" [height]="450" [showGraph]="report.chartResp.showGraph" [response]="report.chartResp" [refreshContinously]="refreshDataContinuously"
+             [menuToggle]="{toggle :menuToggled,class:'col-md-12'}" [eventData]="report.tableResp" [index]="'report'+i" [type]="report.type" [menuToggle]="menuToggle"></app-chart-table>
+            </div>
+          </div>
+        </section>
+					</div>       
+                    </div>
+                                       
+                         
+                                        
+                    
+                </div>

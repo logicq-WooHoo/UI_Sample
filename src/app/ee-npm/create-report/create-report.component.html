@@ -1,0 +1,738 @@
+<div class="fixed-breadcrumb row">           
+  
+    <a class="ee-logo"><img src="/assets/images/ee-logo.png"  alt=""></a>
+    <div class="page-title">
+    <h2 class="single-line">Create Report</h2>
+    </div>
+    
+  </div>
+
+  <div class="fixed-tab-nav sm" [ngClass]="{'sm' : !isDashboardReport}">
+    <div class="row">
+     <div class="col-lg-12 col-sm-12">
+
+        <ul class="nav nav-tabs pull-left" role="tablist">
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="tab" href="#reportConfig" role="tab">Report Configuration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [class.disabled]="!newReportForm.valid" data-toggle="tab" id="reportGeneration" href="#filter" role="tab">Report Generation</a>
+            </li>
+            <li class="pull-right">
+    
+            </li>
+          </ul>
+
+ 
+<div class="pull-right" >
+  <ul class="action-menu">
+    <li>
+      <a [title]="'exportReport'" [class.disabled]="((!deviceTypeModel.controlgroup || deviceTypeModel.controlgroup.length==0)&&(!deviceTypeModel.controlgroupKPI || deviceTypeModel.controlgroupKPI.length ==0)) || !newReportForm.valid || (!tableResponse.data || tableResponse.data.length ==0) "
+        (click)="exportReport('CSV')"><i class="icon-24 icon-download-csv"></i></a>
+
+    </li>
+    <li>
+      <a [title]="'exportReport'" [class.disabled]="((!deviceTypeModel.controlgroup || deviceTypeModel.controlgroup.length==0)&&(!deviceTypeModel.controlgroupKPI || deviceTypeModel.controlgroupKPI.length ==0)) || !newReportForm.valid || (!tableResponse.data || tableResponse.data.length ==0) "
+        (click)="exportReport('PDF')"><i class="icon-24 icon-download-pdf"></i></a>
+
+    </li>
+    <li>
+      <a (click)="saveReport()" [class.disabled]="((!deviceTypeModel.controlgroup || deviceTypeModel.controlgroup.length==0)&&(!deviceTypeModel.controlgroupKPI || deviceTypeModel.controlgroupKPI.length ==0)) || !newReportForm.valid || (!tableResponse.data || tableResponse.data.length ==0) "
+        title="Save"><i class="icon-24 icon-save"></i></a>
+    </li>
+    <li>
+      <a title="Create" [class.disabled]="((!deviceTypeModel.controlgroup || deviceTypeModel.controlgroup.length==0)&&(!deviceTypeModel.controlgroupKPI || deviceTypeModel.controlgroupKPI.length ==0)) || !newReportForm.valid ||  ((!counterIds || counterIds.length == 0) && (!kpiListChecked ||  kpiListChecked.length==0))"
+        type="button" (click)="createOrUpdateReport()"><i class="icon-24 icon-updates"></i></a>
+    </li>
+  </ul>
+
+</div>
+     </div>
+    </div>
+ </div>
+
+
+  <div class="container-fluid dasboard-container top-tab">
+    <div class="main-container tab-container">
+      <div class="modal fade" id="subElementModel" role="dialog">
+        <div class="modal-dialog">
+          Modal content
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{counterGroupPopUp.displayName}}<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">×</button></h4>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="nav nav-tabs sub-tabs2" role="tablist">
+                    <li class="nav-item active">
+                      <a class="nav-link" data-toggle="tab" href="#counterstab" role="tab">Counters</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#propertiestab" role="tab">Properties</a>
+                    </li>
+                     <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#counterskpitab" role="tab">KPI</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content no-space">
+                    <div class="tab-pane active" id="counterstab" role="tabpanel">
+                      <div class="row form-top" *ngIf="counterGroupPopUp.counterList">
+                        <div class="col-md-8 top-heading">
+
+                          <div class="serach-category">
+                            <input type="text" class="search-items" placeholder="Search" [(ngModel)]="counterGroupPopUp.search">
+                            <button type="submit" class="search-btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="pull-right">
+                            <div class="form-check">
+                              <input class="form-check-input customCheck circle"  type="checkbox" [(ngModel)]="counterGroupPopUp.showAll" (change)="addAllCounterIds(counterGroupPopUp,counterGroupPopUp.showAll,'counters');"
+                                [attr.id]="'counters-'+i">
+                              <label class="form-check-label" [attr.for]="'counters-'+i">Add all</label>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <ul class="counter-list-item dropdown-overflow-popup" *ngIf="(counterGroupPopUp.counterList && counterGroupPopUp.counterList.length>10) then largeList; else smallList">
+                         </ul>
+                           <ng-template #largeList>
+                            <virtual-scroll [items]="counterGroupPopUp.counterList | searchpipe : counterGroupPopUp.search : ['displayName']" (update)="scrollListsC = $event;">
+                            <ng-template let-k="index" ngFor let-counter [ngForOf]="scrollListsC ">
+                              <li class="col-md-4" style="list-style:none;">
+                                <div class="form-check">
+                                  <input class="form-check-input customCheck"    type="checkbox" [attr.id]="'counter-'+k" [(ngModel)]="counter.showEnable" (change)="addCounterIds(counter,counter.showEnable,counterGroupPopUp,'counters')">
+                                  <label class="form-check-label ellipsis" [attr.for]="'counter-'+k">{{ counter.displayName}}</label>
+                                </div>
+                              </li>
+                            </ng-template>
+                            </virtual-scroll>
+                            </ng-template>
+                          <ng-template #smallList>
+                          <ng-template  let-k="index" ngFor let-counter [ngForOf]="counterGroupPopUp.counterList | searchpipe : counterGroupPopUp.search : ['displayName']">
+                              <li class="col-md-4" style="list-style:none;">
+                                <div class="form-check">
+                                  <input class="form-check-input customCheck"    type="checkbox" [attr.id]="'counter-'+k" [(ngModel)]="counter.showEnable" (change)="addCounterIds(counter,counter.showEnable,counterGroupPopUp,'counters')">
+                                  <label class="form-check-label ellipsis" [attr.for]="'counter-'+k">{{ counter.displayName}}</label>
+                                </div>
+                              </li>
+                            </ng-template>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="propertiestab" role="tabpanel">
+
+
+                      <div class="row form-top">
+                        <div class="col-md-8 top-heading">
+
+                          <div class="serach-category">
+                            <input type="text" class="search-items" placeholder="Search" [(ngModel)]="counterGroupPopUp.searchProp">
+                            <button type="submit" class="search-btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="pull-right" *ngIf="counterGroupPopUp?.properties">
+                            <div class="form-check">
+                              <input class="form-check-input customCheck circle"   type="checkbox"  [(ngModel)]="counterGroupPopUp.showAllProps" (change)="addAllProperties(counterGroupPopUp,counterGroupPopUp.showAllProps)"
+                                [attr.id]="'properties'+counterGroupPopUp.counterGroupId">
+                              <label class="form-check-label" [attr.for]="'properties'+counterGroupPopUp.counterGroupId">Add all</label>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <ul *ngIf="counterGroupPopUp.properties;else spinner1" class="counter-list-item dropdown-overflow-popup">
+                        <li *ngFor="let property of counterGroupPopUp.properties | searchpipe : counterGroupPopUp.searchProp : ['propertyName']  ;let k=index;">
+                          <div class="form-check">
+                            <input class="form-check-input customCheck" type="checkbox"  [attr.id]="'property'+property.id" [(ngModel)]="property.showEnable" (change)="addProperties(property.propertyName,property.showEnable,null,counterGroupPopUp);">
+                            <label class="form-check-label ellipsis" [attr.for]="'property'+property.id">{{ property.propertyName}}</label>
+                          </div>
+
+                         <!--<select *ngIf="property.propertyValues.values" id="filter" class="filter-select">
+	  							<option *ngFor="let oprtion of property.propertyValues.values" [value]="oprtion">
+	  							{{oprtion}}
+	  							</option>
+	  						
+	  						</select>-->
+
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="tab-pane" id="counterskpitab" role="tabpanel">
+                    <div class="row form-top">
+                      <div class="col-md-8 top-heading">
+                        <div class="serach-category">
+                          <input type="text" class="search-items" placeholder="Search" [(ngModel)]="counterGroupPopUp.searchKPI">
+                          <button type="submit" class="search-btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="pull-right">
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle"   type="checkbox" [(ngModel)]="counterGroupPopUp.showAllKPI" (change)="addAllCounterIds(counterGroupPopUp,counterGroupPopUp.showAllKPI,'kpi');"
+                              [attr.id]="'selectALLKPI'+counterGroupPopUp.counterGroupId">
+                            <label class="form-check-label" [attr.for]="'selectALLKPI'+counterGroupPopUp.counterGroupId">Add All</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul *ngIf="(counterGroupPopUp.kpis && counterGroupPopUp.kpis.length>0);else spinner1" class="counter-list-item dropdown-overflow">
+                      <li *ngFor="let kpi of counterGroupPopUp.kpis | searchpipe : counterGroupPopUp.searchKPI : ['displayName'];let k=index;">
+                        <div class="form-check">
+                          <input class="form-check-input customCheck" type="checkbox"   [(ngModel)]="kpi.showEnable" (change)="addCounterIds(kpi,kpi.showEnable,counterGroupPopUp,'kpi');"
+                            [attr.id]="'kpi'+i+k">
+                          <label class="form-check-label" [attr.for]="'kpi'+i+k">{{kpi.displayName }}</label>
+                        </div>
+
+                      </li>
+
+
+                    </ul>
+                  </div>
+                       
+                          <!--<div class="col-md-12" *ngIf="deviceTypeModel.controlgroupKPI  && deviceTypeModel.controlgroupKPI.length > 0">
+                            <div class="pull-right">
+                              <div class="serach-category">
+                                <input type="text" class="search-query" placeholder="Search" [(ngModel)]="searchKPI">
+                                <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+
+                            <div class="row form-top">
+                              <div class="col-md-3" *ngFor="let counterGroupKPI  of deviceTypeModel.controlgroupKPI  | searchpipe :searchKPI :['displayName'];let i =index;">
+                                <div *ngIf="i<12 || showMoreItemsKPI">
+                                  <div class="counter" [id]="counterGroupKPI.displayName+'_KPI'">
+
+                                    <a name="countergroup" class="counter-groups" data-toggle="modal" (click)="counterGroupKPIPopUp = counterGroupKPI " href="#kpiModel" [ngClass]="{'has-enabled-kpis' : getEnabledCounter(counterGroupKPI,'kpis') , 'has-enabled-prop-kpi' : getEnabledCounter(counterGroupKPI,'properties')}"
+                                      (click)="counterGroupKPIPopUp = counterGroupKPI" [id]="counterGroupKPI.counterGroupId+'kpis'">
+                                      <h4 class="panel-title" [title]="counterGroupKPI.displayName"><span class="ellipsis">{{counterGroupKPI.displayName}}</span></h4>
+
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>-->
+                          <!--<div class="row form-top">
+                            <div class="col-md-12">
+                              <div class="pull-right">
+                                <a data-toggle="collapse" data-target="#kpis"><span class="more-items">View Selected KPIs</span></a>
+                                <a *ngIf="(!searchKPI || searchKPI.length<0) && kpiList && kpiList.length >12" (click)="showMoreItemsKPI = ! showMoreItemsKPI"><span class="more-items" *ngIf="showMoreItemsKPI ">Show Less Items</span><span class="more-items" *ngIf="!showMoreItemsKPI ">Show More Items</span></a>
+                              </div>
+                            </div>
+                          </div>-->
+
+                          <!--<div class="row form-top">
+                            <div class="col-md-12">
+                              <div class="counters" *ngIf="deviceTypeModel.controlgroupKPI">
+                                <div class="row v-scroll collapse" style="margin-left: 0px; margin-right:0px;" id="kpis">
+                                  <div class="row form-top space-adj">
+                                    <div class="col-md-12">
+                                      <h3 class="section-title">Selected KPIs</h3>
+                                    </div>
+                                  </div>
+                                  <ng-template ngFor let-kpicg [ngForOf]="deviceTypeModel.controlgroupKPI">
+
+                                    <div [ngClass]="(enabledCounterGroup(kpicg,'has-enabled-kpis','kpis') && enabledCounterGroup(kpicg,'has-enabled-prop-kpi','kpis')) ? 'col-md-6':'col-md-3'"
+                                      *ngIf="enabledCounterGroup(kpicg,'has-enabled-kpis','kpis') || enabledCounterGroup(kpicg,'has-enabled-prop-kpi','kpis')">
+                                      <div class="counter-card">
+                                        <h4 class="panel-title"><span class="ellipsis">{{kpicg.displayName}}</span></h4>
+                                        <div class="row panel-content">
+                                          <div class="" [ngClass]="(enabledCounterGroup(kpicg,'has-enabled-prop-kpi','kpis')) ? 'col-md-5 v-border':'col-md-12'" *ngIf="enabledCounterGroup(kpicg,'has-enabled-kpis','kpis');">
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                <span class="border-heading">KPI</span>
+                                              </div>
+                                            </div>
+                                            <ul class="card-items">
+                                              <ng-template ngFor let-kpi [ngForOf]="kpicg.kpis">
+                                                <li *ngIf="kpi.showEnable">{{kpi.displayName}}</li>
+                                              </ng-template>
+                                            </ul>
+                                          </div>
+                                          <div class="col-md-7" [ngClass]="(enabledCounterGroup(kpicg,'has-enabled-prop-kpi','kpis')) ? 'col-md-7':'col-md-12'" *ngIf="enabledCounterGroup(kpicg,'has-enabled-prop-kpi','kpis')">
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                <span class="border-heading">Properties</span>
+                                              </div>
+                                            </div>
+                                            <ul class="card-items">
+                                              <ng-template ngFor let-properties [ngForOf]="kpicg.properties">
+                                                <li *ngIf="properties.showEnable">{{properties.propertyKey.propertyName}}</li>
+                                              </ng-template>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                                </div>
+                              </div>
+                            </div>
+                          </div>-->
+                       
+                      
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="kpiModel" role="dialog">
+        <div class="modal-dialog">
+          Modal content
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{counterGroupKPIPopUp.displayName}} <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">×</button> </h4>
+             
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <ul class="nav nav-tabs sub-tabs2" role="tablist">
+                  <li class="nav-item active">
+                    <a class="nav-link" data-toggle="tab" href="#counterskpitab" role="tab">KPIs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#propertieskpitab" role="tab">Properties</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="counterskpitab" role="tabpanel">
+                    <div class="row form-top">
+                      <div class="col-md-8 top-heading">
+                        <div class="serach-category">
+                          <input type="text" class="search-items" placeholder="Search" [(ngModel)]="counterGroupKPIPopUp.searchKPI">
+                          <button type="submit" class="search-btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="pull-right">
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle"   type="checkbox" [(ngModel)]="counterGroupKPIPopUp.showAll" (change)="addAllCounterIds(counterGroupKPIPopUp,counterGroupKPIPopUp.showAll,'kpi');"
+                              [attr.id]="'selectALL'+counterGroupKPIPopUp.counterGroupId">
+                            <label class="form-check-label" [attr.for]="'selectALL'+counterGroupKPIPopUp.counterGroupId">Add All</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul *ngIf="(counterGroupKPIPopUp.kpis && counterGroupKPIPopUp.kpis.length>0);else spinner1" class="counter-list-item dropdown-overflow">
+                      <li *ngFor="let kpi of counterGroupKPIPopUp.kpis | searchpipe : counterGroupKPIPopUp.searchKPI : ['displayName'];let k=index;">
+                        <div class="form-check">
+                          <input class="form-check-input customCheck" type="checkbox"   [(ngModel)]="kpi.showEnable" (change)="addCounterIds(kpi,kpi.showEnable,counterGroupKPIPopUp,'kpi');"
+                            [attr.id]="'kpi'+i+k">
+                          <label class="form-check-label" [attr.for]="'kpi'+i+k">{{kpi.displayName }}</label>
+                        </div>
+
+                      </li>
+
+
+                    </ul>
+                  </div>
+                  <div class="tab-pane" id="propertieskpitab" role="tabpanel">
+                    <div class="row">
+                      <div class="col-md-12 top-heading">
+                        <div class="pull-left">
+                          <div class="serach-category">
+                            <input type="text" class="search-items" placeholder="Search" [(ngModel)]="counterGroupKPIPopUp.searchProperties">
+                            <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                          </div>
+                        </div>
+                        <div class="pull-right">
+                          <div class="form-check">
+                            <input class="form-check-input customCheck circle" type="checkbox"   [(ngModel)]="counterGroupKPIPopUp.showAllProps" [id]="'propertiesselectall'+i"
+                              (change)="addAllProperties(counterGroupKPIPopUp,counterGroupKPIPopUp.showAllProps)">
+                            <label class="form-check-label" [attr.for]="'propertiesselectall'+i">Add All</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul *ngIf="counterGroupKPIPopUp.properties;else spinner1" class="counter-list-item dropdown-overflow">
+                      <li *ngFor="let property of counterGroupKPIPopUp.properties | searchpipe : counterGroupKPIPopUp.searchProperties : ['displayName'] ;let k=index;">
+                        <div class="form-check">
+                          <input class="form-check-input customCheck" type="checkbox"  [attr.id]="'kpiproperty'+k" [(ngModel)]="property.showEnable"
+                            (change)="addProperties( property.propertyKey.propertyName,property.showEnable,null,counterGroupKPIPopUp);">
+                          <label class="form-check-label" [attr.for]="'kpiproperty'+k">{{ property.propertyKey.propertyName}}</label>
+                        </div>
+
+                        <select *ngIf="property.propertyValues" id="filter" class="filter-select">
+                                              <option *ngFor="let oprtion of propertyValues" selected="selcted">
+                                              {{oprtion}}
+                                              </option>
+                                          </select>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    <!-- Tab panes -->
+      <div class="scroll-tab-content1">
+        <div class="tab-content">
+          <div class="tab-pane active" id="reportConfig" role="tabpanel">
+            <div class="row">
+              <!-- Column Right one-column -->
+              <div class="col-md-12">
+                <div class="custom-form">
+                  <form class="form-horizontal" validate [formGroup]="newReportForm">
+                    <div class="form-group row adj-space-top">
+                      <div class="col-md-6">
+
+                        <input type="text" class="form-control form-control-no " formControlName="ReportTitle" required>
+                        <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="newReportForm.controls['ReportTitle'].setValue('')"></span>
+                        <span class="bar"></span>
+                        <label>Report Name</label>
+                        <span class="add-error hide">Report Name<span></span></span>
+                      </div>
+
+                    </div>
+
+                    <!-- Report Type -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label class="label">Report Type</label>
+
+                        <div class="row report-type">
+                          <div class="type-block" *ngFor="let report of reportTypeConfigList;let i =index;">
+                            <h2 class="clearfix"><span [attr.class]="report.class"></span> <span>{{report.type}}</span></h2>
+                            <ul class="type-list">
+                              <li  *ngFor="let reportSubType of report.subtype">
+                                <input type="radio" [hidden]="true" formControlName="ReportType" style="visibility:hidden;">
+                                <a [ngClass]="{'active' : ( ( newReportForm.controls['ReportType'].value).subType==reportSubType.name  && ( newReportForm.controls['ReportType'].value).type==report.type )}"
+                                  (click)="selectedReportType(reportSubType , report.type);">
+				  <span class="image"><img src="{{reportSubType.image}}" /></span>
+				  <span class="text">{{reportSubType.name}}</span>
+           <!--<span [ngClass]="{'tick-mark' : ( ( newReportForm.controls['ReportType'].value).subType==reportSubType.name  && ( newReportForm.controls['ReportType'].value).type==report.type )}"></span>-->
+				  </a>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="form-group row adj-space">
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-sm-4 dropdown">
+                            <input type="text" class="form-control form-control-no dropdown" [element-id]="'timestring'" [form-validator]="newReportForm.controls['timestring'].value"
+                              [validate]="TriggeredSave" (isFormValid)="ValidateForm($event)" (focus)="showDropdown($event);"
+                              (blur)="hideDropdown($event)" required formControlName="timestring">
+                                <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="setFormControlValues('','timestring');"></span>
+                            <div class="drop-items drop-list hide">
+                              <ul class="dropdown-overflow">
+                                <li *ngFor="let timestring of newReportModel.timeStringList | searchpipe : newReportForm.get('timestring').value" (mousedown)="setFormControlValues(timestring,'timestring');">
+                                  <label>{{timestring}}</label>
+                                </li>
+                              </ul>
+                            </div>
+                            <span class="bar"></span>
+                            <label>Duration</label>
+                            <span class="add-error hide">Duration<span></span></span>
+                          </div>
+                          <div class="col-sm-4 dropdown" [hidden]="newReportForm.controls['timestring'].value=='Custom'">
+                            <input type="text" class="form-control form-control-no dropdown" (focus)="showDropdown($event);" (blur)="hideDropdown($event)"
+                              required formControlName="timerange">
+                             <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="setFormControlValues('','timerange');"></span>
+                            <div class="drop-items drop-list hide">
+                              <ul class="dropdown-overflow">
+                                <li *ngFor="let timerange of newReportModel.timeRangeList | searchpipe : newReportForm.get('timerange').value" (mousedown)="setFormControlValues(timerange,'timerange');">
+                                  <label>{{timerange}}</label>
+                                </li>
+                              </ul>
+                            </div>
+                            <span class="bar"></span>
+                            <label>Time Range</label>
+                            <span class="add-error hide">Time Range<span></span></span>
+                          </div>
+                          <div class="col-md-4" [hidden]="newReportForm.controls['timestring'].value!='Custom'">
+                            <input type="text" class="form-control form-control-no" required formControlName="fromDate" id="datePicker" />
+                            <span class="bar"></span>
+                            <label>From</label>
+                            <span class="add-error hide">From date<span></span></span>
+                            <div #datePicker></div>
+                            <span class="calender-icon"></span>
+                          </div>
+                          <div class="col-md-4 cal-hold-icon" [hidden]="newReportForm.controls['timestring'].value!='Custom'">
+                            <input type="text" class="form-control form-control-no" required formControlName="toDate" id="todatePicker" />
+                            <span class="bar"></span>
+                            <label>To</label>
+                            <span class="add-error hide">To date<span></span></span>
+                            <div #todatePicker></div>
+                            <span class="calender-icon"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <!--<div class="col-md-5 alert help-info">
+                          <span class="icon-16 help pull-left" tooltip="The time inetrval used for report"></span>
+                        </div>-->
+                    </div>
+                    <div class="form-group row adj-space">
+                      <div class="col-md-6 dropdown">
+                        <input type="text" class="form-control form-control-no dropdown" (focus)="showDropdown($event);" (blur)="hideDropdown($event);"
+                          formControlName="granularity" required>
+                           <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="setFormControlValues('','granularity');"></span>
+                        <div class="drop-items drop-list hide">
+                          <ul>
+                            <li *ngFor="let granularity of newReportModel.granularities  | searchpipe : newReportForm.get('granularity').value" (mousedown)="setFormControlValues(granularity,'granularity')">{{ granularity }}</li>
+                          </ul>
+                        </div>
+                        <span class="bar"></span>
+                        <label>Aggregation granularity</label>
+                        <span class="add-error hide">Aggregation granularity<span></span></span>
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="pull-right">
+                          <a class="btn btn-primary" [class.disabled]="!newReportForm.valid" (click)="gotoReportGeneration('reportGeneration')">Next</a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane reoprt-details" id="filter" role="tabpanel">
+            <div>
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="custom-form">
+                    <div class="form-group row adj-space">
+                      <div class="col-sm-4 dropdown">
+                        <input type="text" class="form-control form-control-no dropdown" [(ngModel)]="element" required>
+                        <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="element=''"></span>
+                        <div class="drop-items drop-list hide">
+                          <ul class="dropdown-overflow">
+                            <li *ngFor="let element of elements" (focus)="showDropdown($event);" (mousedown)="selectDeviceType(element,$event);" (blur)="hideDropdown($event)">
+                              <label>{{element}}</label>
+                            </li>
+                          </ul>
+                        </div>
+                        <span class="bar"></span>
+                        <label>Device Type</label>
+                        <span class="add-error hide">Counter Group<span></span></span>
+                      </div>
+                      <div class="col-sm-4 dropdown" [hidden]="element=='DSR'">
+                        <input type="text" class="form-control form-control-no dropdown" name="controlgroup" [(ngModel)]="deviceTypeModel.elementUserLabel"
+                          required> <span class="icon-16 icn_clear_16 clear-btn hide" (mousedown)="deviceTypeModel={}"></span>
+                        <div class="drop-items drop-list hide">
+                          <ul *ngIf="nodes && nodes.length>0;else spinner1" class="dropdown-overflow">
+                            <li (mousedown)="addJSONParsedModel('all',$event);">
+                              <label>All Nodes</label>
+                            </li>
+                            <li *ngFor="let device of nodes | searchpipe : deviceTypeModel.elementUserLabel : ['elementUserLabel']" (mousedown)="addJSONParsedModel(device,$event);">
+                              <label>{{device.elementUserLabel}}</label>
+                            </li>
+
+
+                          </ul>
+                          <ng-template #spinner1>
+                            <!--<div style="padding-left:150px;height:50px;padding-top:15px;"><i class="fa fa-spinner fa-pulse fa-2x "></i></div>-->
+                            <div class="sk-wave">
+
+                              <div class="sk-rect sk-rect1"></div>
+                              <div class="sk-rect sk-rect2"></div>
+                              <div class="sk-rect sk-rect3"></div>
+                              <div class="sk-rect sk-rect4"></div>
+                              <div class="sk-rect sk-rect5"></div>
+                            </div>
+                          </ng-template>
+                        </div>
+                        <span class="bar"></span>
+                        <label>Node </label>
+                        <span class="add-error hide">Counter Group<span></span></span>
+
+                      </div>
+
+
+                    </div>
+                  </div>
+                  <div class="form-group row offset-bottom">
+                    <div class="col-md-12"> <label class="frm-label">Aggregation </label></div>
+                    <div class="col-md-6">
+                      <div class="form-check radioInput">
+
+                        <input class="form-check-input" type="radio" name="radioTest" value="'raw'" id="radio1" [checked]="this.reportDataType == 'raw'"
+                          (change)="setReportDataType('raw')" />
+                        <label class="form-check-label" for="radio1">Raw</label>
+                      </div>
+
+                      <div class="form-check radioInput">
+                        <input class="form-check-input" type="radio" name="radioTest" value="'grouped'" id="radio2" [checked]="this.reportDataType == 'grouped'"
+                          (change)="setReportDataType('grouped')" />
+                        <label class="form-check-label" for="radio2">Grouped</label>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="" *ngIf="deviceTypeModel.elementUserLabel">
+                    <!--<ul class="nav nav-tabs sub-tabs2" role="tablist">
+                      <li class="nav-item active">
+                        <a class="nav-link" data-toggle="tab" href="#Counters" (click)="clearArrays('Counters');" role="tab">Counters</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#Kpi" (click)="clearArrays('Kpi');" role="tab">KPI</a>
+                      </li>
+                    </ul>-->
+                    <!--<div class="tab-content sub-tab-content">-->
+                      <div  id="Counters" >
+                        <div class="row form-top" *ngIf="deviceTypeModel.elementUserLabel">
+                           <div class="col-md-12">
+                          <div class="pull-left">
+                            <h3 class="section-title">Counters Group</h3>
+                          </div>
+                         <div class="pull-right">
+                        <div class="serach-category">
+                                <input type="text" class="search-query" placeholder="Search" [(ngModel)]="searchCG">
+                                <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                         </div>
+                         </div>
+                         </div>
+                        </div>
+
+
+                        <div class="row" *ngIf="deviceTypeModel.controlgroup ;else spinner1" >
+                            <!--<virtual-scroll style="height:200px;" [items]="deviceTypeModel.controlgroup | searchpipe : searchCG : ['displayName']" (update)="scrollListGroup = $event">-->
+                          <div class="col-md-3" *ngFor="let counterGroup1 of deviceTypeModel.controlgroup | searchpipe : searchCG : ['displayName'];let i=index;">
+                        <div *ngIf="i<12 || showMoreItems">
+                              <div class="counter" [id]="counterGroup1.displayName">
+
+                                <a class="counter-groups"name="countergroup" [id]="counterGroup1.counterGroupId+'counters'" [title]="counterGroup1.displayName" [ngClass]="{'has-enabled-counters' : getEnabledCounter(counterGroup1,'counterList') , 'has-enabled-properties' : getEnabledCounter(counterGroup1,'properties')}"
+                                  data-toggle="modal" href="#subElementModel" (click)="addCountersIntoGroup(counterGroup1,true,$event)">
+                                      <span class="ellipsis">{{counterGroup1.displayName}}</span>
+                                </a>
+                              </div> 
+                          </div>
+                          </div>
+                            <!--</virtual-scroll>-->
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="pull-right">
+                              <a data-toggle="collapse" data-target="#selectedCounters"><span class="more-items">View Selected Counters</span></a>
+                             <a *ngIf="(!searchCG || searchCG.length<0) && deviceTypeModel.controlgroup && deviceTypeModel.controlgroup.length >12" (click)="showMoreItems = ! showMoreItems;disableCounters()"><span class="more-items" *ngIf="showMoreItems ">Show Less Items</span><span class="more-items" *ngIf="!showMoreItems ">Show More Items</span></a>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                        <div class="counters">
+
+                          <div class="row v-scroll collapse" id="selectedCounters">
+                            <div class="row form-top space-adj">
+                              <div class="col-md-12">
+                                <h3 class="section-title pull-left">Selected Counters</h3>
+                              </div>
+                            </div>
+                            <ng-template ngFor [ngForOf]="deviceTypeModel.controlgroup" let-cg>
+                              <div [ngClass]="(getEnabledCounter(cg,'kpis')  && getEnabledCounter(cg,'counterList') && getEnabledCounter(cg,'properties')) ||((getEnabledCounter(cg,'kpis')  && getEnabledCounter(cg,'counterList'))  || (getEnabledCounter(cg,'counterList')&& getEnabledCounter(cg,'properties')) || (getEnabledCounter(cg,'kpis')&& getEnabledCounter(cg,'properties')))? 'col-md-6':'col-md-3'"
+                                                *ngIf="getEnabledCounter(cg,'counterList') || getEnabledCounter(cg,'properties')">
+                                <div class="counter-card" *ngIf="(getEnabledCounter(cg,'counterList') || getEnabledCounter(cg,'properties') || getEnabledCounter(cg,'kpis'));">
+                                  <h4 class="panel-title"><span class="ellipsis">{{cg.displayName}}</span></h4>
+                                  <div class="row panel-content">
+                                    <div class="" [ngClass]="(getEnabledCounter(cg,'properties') && getEnabledCounter(cg,'kpis')) ? 'col-md-4 v-border':(getEnabledCounter(cg,'properties') || getEnabledCounter(cg,'kpis') ? 'col-md-6 v-border' : 'col-md-12')"
+                                      *ngIf="getEnabledCounter(cg,'counterList');">
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <span class="border-heading">Counters</span>
+                                        </div>
+                                      </div>
+                                      <ul class="card-items">
+                                        <ng-template ngFor let-counters [ngForOf]="cg.counterList">
+                                          <li *ngIf="counters.showEnable" title="{{counters.displayName}}"><span class="ellipsis">{{counters.displayName}}</span></li>
+                                        </ng-template>
+                                      </ul>
+                                    </div>
+                                        <div class="" [ngClass]="(getEnabledCounter(cg,'counterList') && getEnabledCounter(cg,'properties')) ? 'col-md-4 v-border':(getEnabledCounter(cg,'properties') || getEnabledCounter(cg,'counterList') ? 'col-md-6 v-border' : 'col-md-12')" *ngIf="getEnabledCounter(cg,'kpis');">
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <span class="border-heading">KPI</span>
+                                        </div>
+                                      </div>
+                                      <ul class="card-items">
+                                        <ng-template ngFor let-kpi [ngForOf]="cg.kpis">
+                                          <li *ngIf="kpi.showEnable"><span class="ellipsis">{{kpi.displayName}}</span></li>
+                                        </ng-template>
+                                      </ul>
+                                    </div>
+                                    <div class="" [ngClass]="(getEnabledCounter(cg,'counterList') && getEnabledCounter(cg,'kpis')) ? 'col-md-4 ':(getEnabledCounter(cg,'counterList') || getEnabledCounter(cg,'kpis') ? 'col-md-6' : 'col-md-12')" *ngIf="getEnabledCounter(cg,'properties');">
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <span class="border-heading">Properties</span>
+                                        </div>
+                                      </div>
+                                      <ul class="card-items">
+                                        <ng-template ngFor let-properties [ngForOf]="cg.properties">
+                                          <li *ngIf="properties.showEnable"><span class="ellipsis">{{properties.propertyName}}</span></li>
+                                        </ng-template>
+                                      </ul>
+                                    </div>
+                                 
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+
+                      </div>
+                     
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="row form-top" [hidden]="!response || response.length ==0">
+                            <div class="col-md-12">
+                              <a class="title-link">{{newReportForm.controls['ReportTitle'].value}}</a>
+                            </div>
+
+
+                          </div>
+                          <app-chart-table [showGraph]="showGraph" [height]="350" *ngIf="response" [response]="response" [refreshContinously]="refreshDataContinuously"
+                            (emitSubElement)="selectedSubElement($event);" [eventData]="tableResponse" [index]="0" [type]="(newReportForm.controls['ReportType'].value).subType"
+                            [menuToggle]="menuToggle" [tableSearch]="searchData"></app-chart-table>
+                        </div>
+                      </div>
+
+                    <!--</div>-->
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

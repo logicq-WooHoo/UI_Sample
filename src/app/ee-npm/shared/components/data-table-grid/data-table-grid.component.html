@@ -1,0 +1,29 @@
+<div  >
+    <div class="row form-top"  >
+       <div class="col-md-5 top-heading">
+
+                          <div class="serach-category">
+                            <input type="text" class="search-items" placeholder="Search" [(ngModel)]="search" (ngModelChange)="setQuickFilter(search)">
+                            <button type="submit" class="search-btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                          </div>
+                        </div>
+</div>
+                        <ag-grid-angular   [style.height]="style.height+'px'" style="width:100%" class="ag-fresh"
+                 [gridOptions]="gridOptions"
+                 [columnDefs]="columnDefs"
+                 [rowData]="rowData"
+
+                 [icons]="icons"
+                 enableColResize
+                 enableSorting
+                 enableFilter
+                 groupHeaders
+                 suppressRowClickSelection
+                 toolPanelSuppressGroups
+                 toolPanelSuppressValues
+                (bodyScroll)="viewportChanged($event)"
+                 rowSelection="multiple"
+                  (columnEverythingChanged)="addTitleColumnHeader()"
+                 (gridReady)="onReady($event)">
+</ag-grid-angular>
+</div>

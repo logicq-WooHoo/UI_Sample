@@ -1,0 +1,65 @@
+<div class="row table-pagination" *ngIf="pagination && headers && headers.length > 20">
+  <!-- <div class="pull-left"><h6> Displaying  {{((currentPage * pageSizeSelected)-pageSizeSelected)+1}}-{{currentPage * pageSizeSelected}}   of {{alaramsCount}}  Records</h6></div> -->
+  <span class="pull-left" style="margin-left:10px;margin-top:-25px;">
+   
+   
+        <pagination [boundaryLinks]="true" [totalItems]="headers.length" (pageChanged)="pageChanged($event)" [itemsPerPage]="pageSizeSelected"
+          [(ngModel)]="currentPage" class="pagination-sm" [maxSize]="4" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+          lastText="&raquo;"></pagination>
+     
+   
+  </span>
+  <span style="margin-right: 10px;margin-top: 50px; margin-left: 20px;">
+  {{pageToDisplay+1}} to  {{pageToDisplay+columnsArray.length}} Columns displayed
+</span>
+</div>
+
+
+
+<div class="row " *ngIf="eventData && eventData.length >0">
+  <div class="col-md-12 overflowTable">
+    <table class="table table-bordered">
+      <thead class="thead-inverse">
+        <tr>
+          <th *ngFor="let head1 of columnsArray" [table-mouse-over]="head1.displayName"> <span>{{head1.displayName}}</span><span (click)="fetchDataBySorting($event,head1.id)" class="toggle"></span>
+          </th>
+        </tr>
+      </thead>
+      <!-- <div style="overflow:auto;"> -->
+      <tbody>
+        <tr *ngFor="let event of eventData | orderBy : [sortByName] | searchpipe : search : columnsArray :'id'">
+          <td *ngFor="let head of columnsArray">
+            <span *ngIf="head.id == 'timestamp'" [table-mouse-over]="event[head.id]">{{event[head.id]  | customdate}}</span>
+            <span *ngIf="head.id == 'NodeName' && showAnchoredSubElement==true" [table-mouse-over]="event[head.id]"><a href="#subElementModel" (click)="showSubElements(event[head.id]);" data-toggle="modal">{{event[head.id]}}</a></span>
+             <span *ngIf="head.id == 'NodeName' && showAnchoredSubElement!=true" [table-mouse-over]="event[head.id]">{{event[head.id]}}</span>
+               <span *ngIf="head.id == 'Edit'" [table-mouse-over]="event[head.id]"><a [routerLink]="'/kpiCreation/'+event[head.link]" class="editReport enabled toggleNavba">
+                  <span title="Edit Report"></span>
+                </a></span>
+            <span *ngIf="head.id == 'isActive'">
+             <label class="switch">
+               <a  href="#enablePopup"  (click)="selectKPI(event);" data-toggle="modal">
+                            <input type="checkbox"  disabled readonly [checked]="event[head.id]" >
+                            <div class="slider round" ></div>
+                          </a></label> </span>
+            <span *ngIf="head.id !== 'NodeName' && head.id !== 'timestamp' && head.id != 'isActive' && head.id != 'Edit'" [table-mouse-over]="event[head.id]">{{event[head.id]}}</span>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--<div class="row table-pagination" *ngIf="pagination && headers && headers.length > 20">
+ <div class="pull-left"><h6> Displaying  {{((currentPage * pageSizeSelected)-pageSizeSelected)+1}}-{{currentPage * pageSizeSelected}}   of   Records</h6></div>
+  <span class="pull-left" style="margin-left:10px;margin-top:-25px;">
+   
+   
+        <pagination [boundaryLinks]="true" [totalItems]="headers.length" (pageChanged)="pageChanged($event)" [itemsPerPage]="pageSizeSelected"
+          [(ngModel)]="currentPage" class="pagination-sm" [maxSize]="4" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+          lastText="&raquo;"></pagination>
+     
+   
+  </span>
+ 
+</div>-->

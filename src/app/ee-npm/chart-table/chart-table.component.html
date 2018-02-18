@@ -1,0 +1,52 @@
+
+  <!--<h4 class="list-title"><span class="icon-16 attribute"></span> Sample Chart </h4>-->
+  <div class="" *ngIf="response.length >0 || (eventData.data && eventData.data.length >0 && eventData.headers && eventData.headers.length >0) then popup;">
+     
+  </div>
+   <ng-template #popup>
+     <div class="row dashboard-top-icon"  *ngIf="showGraph"> 
+     
+         <!-- <a class="toggleNavbar" class="icon-16 full-screen" data-toggle="modal" style="margin-right:10px;" [attr.data-target]="'#myModal'+index" (click)="showPopup=true;popUpIndex='popup';heightTable =560;widthTable=1000"><span></span></a>    -->
+        <div class="pull-left"><h3 class="block-title"><a (click)="getSpecificReport()">{{name}}</a></h3></div>        
+          <div class="pull-right" *ngIf="!isDashboardReport">
+          <div class="toggle-view">
+            <a [ngClass]="{'active' : !toggleGraphView}" (click)="toggleGraphView = !toggleGraphView" class="active"><span class="table-view"></span></a>
+            <a [ngClass]="{'active' : toggleGraphView }" (click)="toggleGraphView = !toggleGraphView" ><span class="graph-view"></span></a>   
+          </div>
+         </div> 
+       
+      </div>
+    
+      <app-charts  [index]="index" [height]="height" [data]="response" [chartType]="type" *ngIf="toggleGraphView && showGraph" [refreshedData]="emitRefreshedData"
+        [menuToggle]="menuToggle" ></app-charts>
+      <!--<app-data-table class="martop20" *ngIf="dataTable=='table'" [eventData]="eventData.data"  [headers]="eventData.headers" [hidden]="toggleGraphView" (sortState)="updateSortState($event);"
+      ></app-data-table>-->
+       <app-data-table-grid [eventData]="eventData.data" [widthTable]="widthTable" [heightTable]="height" [headers]="eventData.headers" *ngIf="!toggleGraphView"></app-data-table-grid>
+     </ng-template>
+  <div class="modal fade " [id]="'myModal'+index" role="dialog">
+  <div class="modal-dialog modal-lg" >
+     <div class="modal-content">
+        <div class="modal-body container-shadow" >
+         <div  *ngIf="showPopup">
+           <div class="row dashboard-top-icon"  *ngIf="showGraph">  
+    
+        <div class="pull-left"><h3 class="block-title">{{name}}</h3></div>        
+          <!-- <div class="pull-right">
+          <div class="toggle-view">
+            <a [ngClass]="{'active' : !toggleGraphView}" (click)="toggleGraphView = !toggleGraphView"><span class="table-view"></span></a>
+            <a [ngClass]="{'active' : toggleGraphView }" (click)="toggleGraphView = !toggleGraphView" class="active"><span class="graph-view"></span></a>   
+          </div>
+         </div>  -->
+       
+      </div>
+    
+      <app-charts *ngIf="showGraph" [index]="'popup' + index" [height]="heightTable" [data]="response" [chartType]="type" [hidden]="!toggleGraphView" [refreshedData]="emitRefreshedData"
+        [menuToggle]="menuToggle"></app-charts>
+      <app-data-table class="martop20" *ngIf="dataTable=='table'" [eventData]="eventData.data"  [headers]="eventData.headers" [hidden]="toggleGraphView" (sortState)="updateSortState($event);"
+      ></app-data-table>
+       <app-data-table-grid [eventData]="eventData.data" [widthTable]="widthTable" *ngIf="dataTable=='grid'" [heightTable]="heightTable" [headers]="eventData.headers" [hidden]="toggleGraphView"></app-data-table-grid>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>

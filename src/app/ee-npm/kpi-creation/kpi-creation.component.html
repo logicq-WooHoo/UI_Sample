@@ -1,0 +1,302 @@
+
+<!--<div class="page-name"><h2 class="page-title">KPI Creation</h2></div>-->
+<app-breadcrumbs [breadcrumb]="breadcrumbs"></app-breadcrumbs>
+<section class="main-content">
+  <div class="container-fluid">
+    <div class="modal fade" id="enablePopup" style="top:200px;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change KPI </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          </div>
+          <div class="modal-body">
+            <p> {{kpiEnableDisableMessage}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="changeKPI();">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="modal fade" id="kpiModel" role="dialog">
+        <div class="modal-dialog">
+          Modal content
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{counterGroupPopUp.displayName}}<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">×</button></h4>
+            </div>
+            <div class="modal-body">
+                 <div class="row form-top">
+                                  <div class="col-md-8 top-heading">
+                                              <div class="serach-category">
+                                                <input type="text" class="search-items" placeholder="Search" [(ngModel)]="counterGroupPopUp.search">
+                                              </div>
+                                  </div>
+                                   </div>
+
+                              <ul *ngIf="counterGroupPopUp.counterList;else spinner1" class="counter-list-item ">
+                                      <virtual-scroll style="height:300px;" [items]="counterGroupPopUp.counterList | searchpipe : counterGroupPopUp.search : ['displayName']" (update)="scrollLists = $event">
+                            <ng-template let-k="index" ngFor let-counter [ngForOf]="scrollLists ">
+                              <li class="col-md-4">
+                                <div class="form-check">
+                                  <input type="checkbox" class="form-check-input customCheck" [(ngModel)]="counter.showEnable" (change)="addCounterIds(counter,counter.showEnable,counterGroupPopUp);" [id]="'countergrpkpi'+i+k">
+                                  <label class="form-check-label ellipsis"  [attr.for]="'countergrpkpi'+i+k">{{counter.displayName !=undefined && counter.displayName!='null' ? counter.displayName + ' (' + counter.counterUnit + ')' : counter.counterId + ' (' + counter.counterUnit + ')'}}</label>
+                                  </div>
+                              </li>
+                            </ng-template>
+                            </virtual-scroll>
+                             
+                              </ul>
+
+                         
+            </div>
+          </div>
+        </div>
+  </div>
+
+
+        <div class="main-container tab-container">
+
+           <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item active">
+                <a class="nav-link" data-toggle="tab" id="kpiConfigTab" href="#kpiConfig"  (click)="setBreadcrumbs('KPI Configuration')" role="tab">KPI Properties</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#filter" (click)="setBreadcrumbs('KPI Calculation')" id="kpiCalculation" role="tab">KPI Calculation</a>
+              </li>
+              <li class="nav-item" *ngIf="!editKPI">
+                <a class="nav-link" id="kpiListAnchor" data-toggle="tab" (click)="getAllKPIs();" href="#kpiList" role="tab">KPI List</a>
+              </li>
+              <li class="pull-right" *ngIf="editKPI">
+                <button type="button" class="btn btn-primary" [routerLink]="'/kpiCreation'">Cancel</button>
+              </li>
+              <li class="pull-right" *ngIf="editKPI">
+                <button type="button" class="btn btn-primary margin-right10" [disabled]="checkFormValidation()" (click)="saveKPI($event)"><i style="color:#fff;margin-top:2px;display:none;"  class="pull-right fa fa-spinner fa-pulse fa-1x "></i>Save KPI</button>
+              </li>
+              <li class="pull-right" *ngIf="!editKPI">
+                <button type="button" class="btn btn-primary margin-right10" [disabled]="checkFormValidation()" (click)="createKPI($event)"><i style="color:#fff;margin-top:2px;display:none;"  class="pull-right fa fa-spinner fa-pulse fa-1x "></i>Create KPI</button>
+              </li>
+            </ul>
+            <div class="tab-content">
+
+              <div class="tab-pane" id="kpiList" role="tabpanel">
+                <div class="table-top-spacing" *ngIf="eventData.headers && eventData.headers.length >0; else spinner">
+                  <app-data-table class="martop20" [eventData]="eventData.data" [showAnchoredSubElement]="false" [headers]="eventData.headers"
+                    (refreshedData)="emitRefreshedData" (selectedKpiId)="selectedKpiId($event)" [pagination]="true"></app-data-table>
+                </div>
+                <ng-template #spinner>
+                  <div class="row">
+                    <div class="sk-wave">
+
+                      <div class="sk-rect sk-rect1"></div>
+                      <div class="sk-rect sk-rect2"></div>
+                      <div class="sk-rect sk-rect3"></div>
+                      <div class="sk-rect sk-rect4"></div>
+                      <div class="sk-rect sk-rect5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+              <div class="tab-pane active" id="kpiConfig" role="tabpanel">
+                <div class="row">
+                  <!-- Column Right one-column -->
+                  <div class="col-md-12">
+                    <div class="custom-form">
+                      <form class="form-horizontal" validate [formGroup]="newKPIForm">
+
+                        <div class="form-group row">
+                          <div class="col-md-8">
+
+                            <!--<input type="text" class="form-control form-control-no " formControlName="kpiName" required [ngClass]="{'error-field' :kpiName.invalid && (kpiName.dirty || kpiName.touched)}">-->
+                            
+                            <input type="text" class="form-control form-control-no " *ngIf="!editKPI" formControlName="kpiName" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('kpiName')">
+                            <input type="text" class="form-control form-control-no " *ngIf="editKPI" formControlName="kpiName" required [attr.disabled]="editKPI">
+                            <span class="bar"></span>
+                            <label>KPI Name</label>
+
+                            <app-field-error-display [displayError]="kpiName.invalid && (kpiName.dirty || kpiName.touched)" [errorMsg]="'KPI name is mandatory'"></app-field-error-display>
+                            <app-field-error-display [displayError]="kpiName.invalid && (kpiName.dirty || kpiName.touched) && kpiName.errors.pattern"
+                              [errorMsg]="'KPI name is invalid. Please remove special characters.'"></app-field-error-display>
+
+                          </div>
+
+               
+                        
+                        </div>
+
+                        <div class="form-group row adj-space-top">
+                                       <div class="col-md-4">
+
+                            <input type="text" class="form-control form-control-no dropdown " formControlName="aggregationType" required [ngClass]="commonFieldErrorUtilService.displayDropdownFieldCSS('aggregationType',kpiFormModel.aggregationType)">
+                            <div class="drop-items drop-list hide">
+                              <ul>
+                                <li *ngFor="let aggregation of kpiFormModel.aggregationType" (mousedown)="setFormControlValues(aggregation ,'aggregationType');">{{ aggregation }}</li>
+                              </ul>
+                            </div>
+                            <span class="bar"></span>
+                            <label>Aggregation Type</label>
+                            <app-field-error-display [displayError]="commonFieldErrorUtilService.displayDropdownError('aggregationType',kpiFormModel.aggregationType)"
+                              [errorMsg]="'Please select one of the below aggregation types.'"></app-field-error-display>
+                          </div>
+
+                          <div class="col-md-4">
+                            <input type="text" class="form-control form-control-no " formControlName="kpiUnit" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('kpiUnit')">
+                            <span class="bar"></span>
+                            <label>KPI Unit</label>
+                            <app-field-error-display [displayError]="kpiUnit.invalid && (kpiUnit.dirty || kpiUnit.touched)" [errorMsg]="'KPI Unit is required.'"></app-field-error-display>
+                          </div>
+
+                                              
+                        </div>
+
+                         <div class="form-group row adj-space">
+                               <div class="col-md-8">
+                            <input type="text" class="form-control form-control-no " formControlName="kpiDescription" required [ngClass]="commonFieldErrorUtilService.displayFieldCss('kpiDescription')">
+                            <span class="bar"></span>
+                            <label>KPI Description</label>
+                            <app-field-error-display [displayError]="kpiDescription.invalid && (kpiDescription.dirty || kpiDescription.touched)" [errorMsg]="'KPI Description  is required.'"></app-field-error-display>
+                          </div> 
+                         </div>
+                    
+                       <div class="row">
+                         <div class="col-md-8">
+                           <div class="pull-right">
+                           <a class="btn btn-primary" [ngClass]="addDisabledClassValidateForm()" (click)="gotoKPIGeneration('kpiCalculation')">Next</a>
+                         </div> 
+                        </div>  
+                     </div>
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane reoprt-details" id="filter" role="tabpanel">
+                <div class="row">
+                  <!-- Column Right one-column -->
+                  <div class="col-md-12">
+                    <div class="custom-form">
+                      <div class="form-group row adj-space">
+                        <div class="col-sm-5 dropdown">
+                          <input type="text" class="form-control form-control-no dropdown" [(ngModel)]="element" *ngIf="!editKPI" required>
+                            <span class="icon-16 icn_clear_16 clear-btn hide" title="clear contents" (mousedown)="element=''"></span>
+                          <input type="text" *ngIf="editKPI" [attr.disabled]="editKPI" class="form-control form-control-no dropdown" [(ngModel)]="element"
+                            required>
+                          <div class="drop-items drop-list hide">
+                            <ul class="dropdown-overflow">
+                              <li *ngFor="let element of elements | searchpipe : element" (focus)="showDropdown($event);" (mousedown)="selectDeviceType(element,$event);" (blur)="hideDropdown($event)">
+                                <label>{{element}}</label>
+                              </li>
+                            </ul>
+                          </div>
+                          <span class="bar"></span>
+                          <label>Device Type</label>
+                          <span class="add-error hide">Counter Group<span></span></span>
+                        </div>
+                     
+                      </div>
+                    </div>
+
+
+                    <div class="row form-top" *ngIf="deviceTypeModel.elementUserLabel">
+                      <div class="col-md-12">
+                        <div class="pull-left">
+                                  <h3 class="title">Counters Group</h3>
+                       </div>
+
+                        <div class="pull-right">
+                          <!--<div class="form-inline">-->
+                          <!-- Search -->
+                          <div class="serach-category">
+                            <input type="text" class="search-query" placeholder="Search" [(ngModel)]="searchCG">
+                            <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                          </div>
+
+                          <!--</div>-->
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row" *ngIf="deviceTypeModel.controlgroup ;else spinner1">
+                        <virtual-scroll style="height:210px;" [items]="deviceTypeModel.controlgroup | searchpipe : searchCG : ['displayName']" (update)="scrollListGroup = $event">
+                      <div class="col-md-3" *ngFor="let counterGroup1 of scrollListGroup ;let i=index;">
+                      <div class="counter" [ngClass]="{ 'counter-disabled' : selectCounterGroupId != 0 &&  counterGroup1.counterGroupId != selectCounterGroupId }" [id]="counterGroup1.displayName">
+                            <a name="countergroup"  [title]="counterGroup1.displayName" (click)="showCountersFromGroup(counterGroup1,i,$event);" data-toggle="modal" href="#kpiModel">
+                              <h4 class="panel-title" [title]="counterGroup1.displayName">{{counterGroup1.displayName}}</h4>
+                           </a>
+                        </div>
+                      </div>
+                        </virtual-scroll>
+                    </div>
+                    <ng-template #spinner1>
+                      <div class="row" *ngIf="deviceTypeModel.elementUserLabel">
+                        <div class="sk-wave">
+
+                          <div class="sk-rect sk-rect1"></div>
+                          <div class="sk-rect sk-rect2"></div>
+                          <div class="sk-rect sk-rect3"></div>
+                          <div class="sk-rect sk-rect4"></div>
+                          <div class="sk-rect sk-rect5"></div>
+                        </div>
+                      </div>
+                    </ng-template>
+                
+                    <div class="row" *ngIf="deviceTypeModel.controlgroup">
+                      <div class="col-md-12 formula-drop">
+                        <div class="counter-items formula-drop-items">
+                          <a style="cursor:pointer;" class="formula-custom" *ngFor="let counters of countersDisplay">{{counters.displayName}} <i (click)="removeCounter(counters);" class="icon-16 icon-cross-16"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="shadow kpi-droparea">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="editor-title">
+                        <div class="pull-left">Editor <small>(Drag and drop counters here.)</small></div>
+                        <div class="pull-right oparators"><span class="txt">Operators</span> <a (click)="insertElement($event)" class="formula-item formula-custom-operator"
+                            data-value="-"><i class="glyphicon glyphicon-minus"></i></a> <a (click)="insertElement($event)"
+                            class="formula-item  formula-custom-operator" data-value="+"><i class="glyphicon glyphicon-plus"></i></a>                          <a class="formula-item " (click)="insertElement($event)" data-value="*"><i class="glyphicon glyphicon-asterisk"></i></a>                          <a class="formula-item formula-custom-operator" data-value="(" (click)="insertElement($event)">(</a>                          <a data-value=")" class="formula-item formula-custom-operator" (click)="insertElement($event)">)</a>
+                          <a class="formula-item formula-custom-operator" data-value="/" (click)="insertElement($event)">/</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <ol class="formula formula-advanced">
+                           
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 <div class="row">
+                         <div class="col-md-6">
+                           <div class="pull-left">
+                           <a class="btn btn-primary margin-top-5" [ngClass]="addDisabledClassValidateForm()" (click)="gotoKPIGeneration('kpiConfigTab')">Previous <i class="glyphicon glyphicon-chevron-left"></i></a>
+                         </div> 
+                        </div> 
+                        <div class="col-md-6">
+                           <div class="pull-right">
+                           <a class="btn btn-primary margin-top-5"  (click)="gotoKPIGeneration('kpiListAnchor')">show KPI List <i class="glyphicon glyphicon-chevron-right"></i></a>
+                         </div> 
+                        </div> 
+                     </div>
+              </div>
+            </div>
+        
+
+
+        </div>
+  </div>
+</section>

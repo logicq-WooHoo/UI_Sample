@@ -1,0 +1,50 @@
+{
+    "reports": [
+        {
+            "userTemplateId": "dfsdff",
+            "reportName": "report 111",
+            "userName": "",
+            "jsonString": {}
+        },
+        {
+            "userTemplateId": "kkjghj",
+            "reportName": "Report 1",
+            "userName": "",
+            "jsonString": {}
+        },
+        {
+            "userTemplateId": "yurtyu",
+            "reportName": "Report 2",
+            "userName": "",
+            "jsonString": {}
+        },
+        {
+            "userTemplateId": "loiloo",
+            "reportName": "Report 3",
+            "userName": "",
+            "jsonString": {}
+        }
+    ],
+    "dashboards": [
+        {
+            "id": "3RTuys",
+            "name": "Dashboard1",
+            "type": "common",
+            "view": "both",
+            "subDashboards": [
+                {
+                    "name": "SubDashboard 1",
+                    "subDashboardId": "ge75ge8h",
+                    "dashboardId": null,
+                    "reports": null
+                },
+                {
+                    "name": "SubDashboard 2",
+                    "subDashboardId": "xjhbjo87h",
+                    "dashboardId": null,
+                    "reports": null
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1804 @@
+{
+    "userTemplateId": null,
+    "reportConfiguration": {
+        "configuration": {
+            "attributes": null,
+            "properties": null,
+            "metrics": [
+                {
+                    "id": "SUM_117490512",
+                    "aggregationType": "SUM"
+                },
+                {
+                    "id": "SUM_117490515",
+                    "aggregationType": "SUM"
+                }
+            ],
+            "kpiMetrics": null,
+            "name": "dfvdf",
+            "type": "Graph",
+            "subType": "Bar",
+            "deviceType": "MME",
+            "entity": null,
+            "dimensions": [
+                {
+                    "name": "NodeName",
+                    "displayName": "NodeName",
+                    "id": "NodeName"
+                },
+                {
+                    "name": "SubElementID",
+                    "displayName": "SubElementID",
+                    "id": "SubElementID"
+                }
+            ],
+            "context": null
+        },
+        "filter": {
+            "condition": "OR",
+            "rules": [
+                {
+                    "id": "SUM_117490512",
+                    "value": "-2147483648",
+                    "type": "bound"
+                },
+                {
+                    "id": "SUM_117490515",
+                    "value": "-2147483648",
+                    "type": "bound"
+                }
+            ]
+        },
+        "samplingPeriod": null,
+        "intervals": "last 1 month",
+        "pagination": {
+            "pagenumber": 1,
+            "pagesize": 10000,
+            "pagingSpec": null
+        },
+        "granularity": "DAILY",
+        "reportDataType": "grouped",
+        "filterMap": {}
+    },
+    "metrics": [
+        {
+            "counterId": "117490512",
+            "counterUnit": "times",
+            "counterDescription": "S1 Setup request Times",
+            "aggregation": {
+                "id": 1,
+                "hourSum": 1,
+                "hourMin": 0,
+                "hourMax": 0,
+                "hourAvg": 0,
+                "hourFormula": null,
+                "daySum": 1,
+                "dayMin": 0,
+                "dayMax": 0,
+                "dayAvg": 0,
+                "dayFormula": null,
+                "weekSum": 1,
+                "weekMin": 0,
+                "weekMax": 0,
+                "weekAvg": 0,
+                "weekFormula": null,
+                "monthSum": 1,
+                "monthMin": 0,
+                "monthMax": 0,
+                "monthAvg": 0,
+                "monthFormula": null,
+                "yearSum": 1,
+                "yearMin": 0,
+                "yearMax": 0,
+                "yearAvg": 0,
+                "yearFormula": null
+            },
+            "counterType": "Counter",
+            "aggregationList": [
+                "SUM"
+            ],
+            "displayName": "S1 Setup Req"
+        },
+        {
+            "counterId": "117490515",
+            "counterUnit": "times",
+            "counterDescription": "eNodeB-init S1 Reset success Times",
+            "aggregation": {
+                "id": 1,
+                "hourSum": 1,
+                "hourMin": 0,
+                "hourMax": 0,
+                "hourAvg": 0,
+                "hourFormula": null,
+                "daySum": 1,
+                "dayMin": 0,
+                "dayMax": 0,
+                "dayAvg": 0,
+                "dayFormula": null,
+                "weekSum": 1,
+                "weekMin": 0,
+                "weekMax": 0,
+                "weekAvg": 0,
+                "weekFormula": null,
+                "monthSum": 1,
+                "monthMin": 0,
+                "monthMax": 0,
+                "monthAvg": 0,
+                "monthFormula": null,
+                "yearSum": 1,
+                "yearMin": 0,
+                "yearMax": 0,
+                "yearAvg": 0,
+                "yearFormula": null
+            },
+            "counterType": "Counter",
+            "aggregationList": [
+                "SUM"
+            ],
+            "displayName": "eNodeB init S1 Reset Succ"
+        }
+    ],
+    "kpiMetrics": null,
+    "response": [
+        {
+            "events": [
+                {
+                    "SUM_117490515": 2995.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 3080.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3174.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 3151.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 2752.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 3033.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3517.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 2913.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3758.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 2957.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3192.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 3418.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3349.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 3151.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 2985.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 3241.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3008.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 3324.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3633.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 3122.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3483.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 2954.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3099.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 3419.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 2886.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 3259.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 3044.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 3423.0,
+                    "timestamp": "2017-11-21T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4555.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 4901.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4775.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 4384.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4829.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 4396.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4807.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 4770.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4871.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 5365.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4582.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 4803.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4797.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 4095.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5176.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 5131.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5116.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 4826.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4840.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 4095.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4879.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 4417.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4764.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 4914.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4874.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 4300.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4949.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 4742.0,
+                    "timestamp": "2017-11-22T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5243.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 4695.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4609.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 4983.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4959.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 5082.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4737.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 4566.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5336.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 4407.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4603.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 4552.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4869.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 4535.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4767.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 5437.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4234.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 4755.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4656.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 4501.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4928.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 4121.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4487.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 4631.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4667.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 5103.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4763.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 5096.0,
+                    "timestamp": "2017-11-23T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4657.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 4412.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5450.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 4927.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5029.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 4900.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4377.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 4742.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4751.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 4699.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5145.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 4929.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4806.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 4942.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5071.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 4445.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4462.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 5398.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4607.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 4687.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4390.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 4712.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4871.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 4825.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5060.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 4932.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5260.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 4640.0,
+                    "timestamp": "2017-11-24T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4727.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 4749.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4644.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 4567.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4942.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 4797.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4774.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 4794.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4362.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 5150.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4823.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 4958.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4590.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 4808.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4725.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 4910.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4933.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 5228.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4749.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 4980.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4570.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 4773.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4146.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 4587.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4707.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 4407.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4822.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 4880.0,
+                    "timestamp": "2017-11-25T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5057.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 4733.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4877.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 4731.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4874.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 4991.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4911.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 5211.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4691.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 5205.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5095.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 4168.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5196.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 5375.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4744.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 5225.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5020.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 4371.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5159.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 4816.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4988.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 5384.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4600.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 4282.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4591.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 4625.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4599.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 4832.0,
+                    "timestamp": "2017-11-26T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5008.0,
+                    "SubElementID": "MME001BKTm/Whole System:MME001BKTm",
+                    "NodeName": "MME001BKTm",
+                    "SUM_117490512": 4797.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4318.0,
+                    "SubElementID": "MME001CROm/Whole System:MME001CROm",
+                    "NodeName": "MME001CROm",
+                    "SUM_117490512": 4334.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4984.0,
+                    "SubElementID": "MME001LDSm/Whole System:MME001LDSm",
+                    "NodeName": "MME001LDSm",
+                    "SUM_117490512": 5216.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5024.0,
+                    "SubElementID": "MME001LTNm/Whole System:MME001LTNm",
+                    "NodeName": "MME001LTNm",
+                    "SUM_117490512": 4955.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4762.0,
+                    "SubElementID": "MME001MFDm/Whole System:MME001MFDm",
+                    "NodeName": "MME001MFDm",
+                    "SUM_117490512": 4604.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5273.0,
+                    "SubElementID": "MME001WVNm/Whole System:MME001WVNm",
+                    "NodeName": "MME001WVNm",
+                    "SUM_117490512": 5182.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5113.0,
+                    "SubElementID": "MME002BKTm/Whole System:MME002BKTm",
+                    "NodeName": "MME002BKTm",
+                    "SUM_117490512": 4803.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4693.0,
+                    "SubElementID": "MME002CROm/Whole System:MME002CROm",
+                    "NodeName": "MME002CROm",
+                    "SUM_117490512": 4489.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4734.0,
+                    "SubElementID": "MME002LDSm/Whole System:MME002LDSm",
+                    "NodeName": "MME002LDSm",
+                    "SUM_117490512": 5068.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4267.0,
+                    "SubElementID": "MME002LTNm/Whole System:MME002LTNm",
+                    "NodeName": "MME002LTNm",
+                    "SUM_117490512": 4644.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5381.0,
+                    "SubElementID": "MME002MFDm/Whole System:MME002MFDm",
+                    "NodeName": "MME002MFDm",
+                    "SUM_117490512": 5177.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 5125.0,
+                    "SubElementID": "MME002WVNm/Whole System:MME002WVNm",
+                    "NodeName": "MME002WVNm",
+                    "SUM_117490512": 4685.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4624.0,
+                    "SubElementID": "MME501ENFm/Whole System:MME501ENFm",
+                    "NodeName": "MME501ENFm",
+                    "SUM_117490512": 5113.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                },
+                {
+                    "SUM_117490515": 4554.0,
+                    "SubElementID": "MME501PRSm/Whole System:MME501PRSm",
+                    "NodeName": "MME501PRSm",
+                    "SUM_117490512": 4768.0,
+                    "timestamp": "2017-11-27T00:00:00.000Z"
+                }
+            ]
+        }
+    ],
+    "userName": null,
+    "reportName": null,
+    "graphData": {
+        "seriesData": [
+            {
+                "name": "MME002BKTm_MME002BKTm/Whole System:MME002BKTm_SUM_S1 Setup Req",
+                "id": "MME002BKTm_MME002BKTm/Whole System:MME002BKTm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3151.0
+                    ],
+                    [
+                        1511289000000,
+                        4095.0
+                    ],
+                    [
+                        1511375400000,
+                        4535.0
+                    ],
+                    [
+                        1511461800000,
+                        4942.0
+                    ],
+                    [
+                        1511548200000,
+                        4808.0
+                    ],
+                    [
+                        1511634600000,
+                        5375.0
+                    ],
+                    [
+                        1511721000000,
+                        4803.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002WVNm_MME002WVNm/Whole System:MME002WVNm_SUM_eNodeB init S1 Reset Succ",
+                "id": "MME002WVNm_MME002WVNm/Whole System:MME002WVNm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3099.0
+                    ],
+                    [
+                        1511289000000,
+                        4764.0
+                    ],
+                    [
+                        1511375400000,
+                        4487.0
+                    ],
+                    [
+                        1511461800000,
+                        4871.0
+                    ],
+                    [
+                        1511548200000,
+                        4146.0
+                    ],
+                    [
+                        1511634600000,
+                        4600.0
+                    ],
+                    [
+                        1511721000000,
+                        5125.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002CROm_MME002CROm/Whole System:MME002CROm_SUM_S1 Setup Req",
+                "id": "MME002CROm_MME002CROm/Whole System:MME002CROm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3241.0
+                    ],
+                    [
+                        1511289000000,
+                        5131.0
+                    ],
+                    [
+                        1511375400000,
+                        5437.0
+                    ],
+                    [
+                        1511461800000,
+                        4445.0
+                    ],
+                    [
+                        1511548200000,
+                        4910.0
+                    ],
+                    [
+                        1511634600000,
+                        5225.0
+                    ],
+                    [
+                        1511721000000,
+                        4489.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002LTNm_MME002LTNm/Whole System:MME002LTNm_SUM_eNodeB init S1 Reset Succ",
+                "id": "MME002LTNm_MME002LTNm/Whole System:MME002LTNm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3633.0
+                    ],
+                    [
+                        1511289000000,
+                        4840.0
+                    ],
+                    [
+                        1511375400000,
+                        4656.0
+                    ],
+                    [
+                        1511461800000,
+                        4607.0
+                    ],
+                    [
+                        1511548200000,
+                        4749.0
+                    ],
+                    [
+                        1511634600000,
+                        5159.0
+                    ],
+                    [
+                        1511721000000,
+                        4267.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001WVNm_MME001WVNm/Whole System:MME001WVNm_SUM_S1 Setup Req",
+                "id": "MME001WVNm_MME001WVNm/Whole System:MME001WVNm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3418.0
+                    ],
+                    [
+                        1511289000000,
+                        4803.0
+                    ],
+                    [
+                        1511375400000,
+                        4552.0
+                    ],
+                    [
+                        1511461800000,
+                        4929.0
+                    ],
+                    [
+                        1511548200000,
+                        4958.0
+                    ],
+                    [
+                        1511634600000,
+                        4168.0
+                    ],
+                    [
+                        1511721000000,
+                        5182.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002LDSm_MME002LDSm/Whole System:MME002LDSm_SUM_eNodeB init S1 Reset Succ",
+                 "id": "MME002LDSm_MME002LDSm/Whole System:MME002LDSm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3008.0
+                    ],
+                    [
+                        1511289000000,
+                        5116.0
+                    ],
+                    [
+                        1511375400000,
+                        4234.0
+                    ],
+                    [
+                        1511461800000,
+                        4462.0
+                    ],
+                    [
+                        1511548200000,
+                        4933.0
+                    ],
+                    [
+                        1511634600000,
+                        5020.0
+                    ],
+                    [
+                        1511721000000,
+                        4734.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001MFDm_MME001MFDm/Whole System:MME001MFDm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        2957.0
+                    ],
+                    [
+                        1511289000000,
+                        5365.0
+                    ],
+                    [
+                        1511375400000,
+                        4407.0
+                    ],
+                    [
+                        1511461800000,
+                        4699.0
+                    ],
+                    [
+                        1511548200000,
+                        5150.0
+                    ],
+                    [
+                        1511634600000,
+                        5205.0
+                    ],
+                    [
+                        1511721000000,
+                        4604.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME501ENFm_MME501ENFm/Whole System:MME501ENFm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3259.0
+                    ],
+                    [
+                        1511289000000,
+                        4300.0
+                    ],
+                    [
+                        1511375400000,
+                        5103.0
+                    ],
+                    [
+                        1511461800000,
+                        4932.0
+                    ],
+                    [
+                        1511548200000,
+                        4407.0
+                    ],
+                    [
+                        1511634600000,
+                        4625.0
+                    ],
+                    [
+                        1511721000000,
+                        5113.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002LDSm_MME002LDSm/Whole System:MME002LDSm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3324.0
+                    ],
+                    [
+                        1511289000000,
+                        4826.0
+                    ],
+                    [
+                        1511375400000,
+                        4755.0
+                    ],
+                    [
+                        1511461800000,
+                        5398.0
+                    ],
+                    [
+                        1511548200000,
+                        5228.0
+                    ],
+                    [
+                        1511634600000,
+                        4371.0
+                    ],
+                    [
+                        1511721000000,
+                        5068.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001CROm_MME001CROm/Whole System:MME001CROm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3174.0
+                    ],
+                    [
+                        1511289000000,
+                        4775.0
+                    ],
+                    [
+                        1511375400000,
+                        4609.0
+                    ],
+                    [
+                        1511461800000,
+                        5450.0
+                    ],
+                    [
+                        1511548200000,
+                        4644.0
+                    ],
+                    [
+                        1511634600000,
+                        4877.0
+                    ],
+                    [
+                        1511721000000,
+                        4318.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002BKTm_MME002BKTm/Whole System:MME002BKTm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3349.0
+                    ],
+                    [
+                        1511289000000,
+                        4797.0
+                    ],
+                    [
+                        1511375400000,
+                        4869.0
+                    ],
+                    [
+                        1511461800000,
+                        4806.0
+                    ],
+                    [
+                        1511548200000,
+                        4590.0
+                    ],
+                    [
+                        1511634600000,
+                        5196.0
+                    ],
+                    [
+                        1511721000000,
+                        5113.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME501ENFm_MME501ENFm/Whole System:MME501ENFm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        2886.0
+                    ],
+                    [
+                        1511289000000,
+                        4874.0
+                    ],
+                    [
+                        1511375400000,
+                        4667.0
+                    ],
+                    [
+                        1511461800000,
+                        5060.0
+                    ],
+                    [
+                        1511548200000,
+                        4707.0
+                    ],
+                    [
+                        1511634600000,
+                        4591.0
+                    ],
+                    [
+                        1511721000000,
+                        4624.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001LTNm_MME001LTNm/Whole System:MME001LTNm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3517.0
+                    ],
+                    [
+                        1511289000000,
+                        4807.0
+                    ],
+                    [
+                        1511375400000,
+                        4737.0
+                    ],
+                    [
+                        1511461800000,
+                        4377.0
+                    ],
+                    [
+                        1511548200000,
+                        4774.0
+                    ],
+                    [
+                        1511634600000,
+                        4911.0
+                    ],
+                    [
+                        1511721000000,
+                        5024.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001WVNm_MME001WVNm/Whole System:MME001WVNm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3192.0
+                    ],
+                    [
+                        1511289000000,
+                        4582.0
+                    ],
+                    [
+                        1511375400000,
+                        4603.0
+                    ],
+                    [
+                        1511461800000,
+                        5145.0
+                    ],
+                    [
+                        1511548200000,
+                        4823.0
+                    ],
+                    [
+                        1511634600000,
+                        5095.0
+                    ],
+                    [
+                        1511721000000,
+                        5273.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002CROm_MME002CROm/Whole System:MME002CROm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        2985.0
+                    ],
+                    [
+                        1511289000000,
+                        5176.0
+                    ],
+                    [
+                        1511375400000,
+                        4767.0
+                    ],
+                    [
+                        1511461800000,
+                        5071.0
+                    ],
+                    [
+                        1511548200000,
+                        4725.0
+                    ],
+                    [
+                        1511634600000,
+                        4744.0
+                    ],
+                    [
+                        1511721000000,
+                        4693.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002MFDm_MME002MFDm/Whole System:MME002MFDm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        2954.0
+                    ],
+                    [
+                        1511289000000,
+                        4417.0
+                    ],
+                    [
+                        1511375400000,
+                        4121.0
+                    ],
+                    [
+                        1511461800000,
+                        4712.0
+                    ],
+                    [
+                        1511548200000,
+                        4773.0
+                    ],
+                    [
+                        1511634600000,
+                        5384.0
+                    ],
+                    [
+                        1511721000000,
+                        5177.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME501PRSm_MME501PRSm/Whole System:MME501PRSm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3423.0
+                    ],
+                    [
+                        1511289000000,
+                        4742.0
+                    ],
+                    [
+                        1511375400000,
+                        5096.0
+                    ],
+                    [
+                        1511461800000,
+                        4640.0
+                    ],
+                    [
+                        1511548200000,
+                        4880.0
+                    ],
+                    [
+                        1511634600000,
+                        4832.0
+                    ],
+                    [
+                        1511721000000,
+                        4768.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001LDSm_MME001LDSm/Whole System:MME001LDSm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3033.0
+                    ],
+                    [
+                        1511289000000,
+                        4396.0
+                    ],
+                    [
+                        1511375400000,
+                        5082.0
+                    ],
+                    [
+                        1511461800000,
+                        4900.0
+                    ],
+                    [
+                        1511548200000,
+                        4797.0
+                    ],
+                    [
+                        1511634600000,
+                        4991.0
+                    ],
+                    [
+                        1511721000000,
+                        5216.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002MFDm_MME002MFDm/Whole System:MME002MFDm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3483.0
+                    ],
+                    [
+                        1511289000000,
+                        4879.0
+                    ],
+                    [
+                        1511375400000,
+                        4928.0
+                    ],
+                    [
+                        1511461800000,
+                        4390.0
+                    ],
+                    [
+                        1511548200000,
+                        4570.0
+                    ],
+                    [
+                        1511634600000,
+                        4988.0
+                    ],
+                    [
+                        1511721000000,
+                        5381.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001LTNm_MME001LTNm/Whole System:MME001LTNm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        2913.0
+                    ],
+                    [
+                        1511289000000,
+                        4770.0
+                    ],
+                    [
+                        1511375400000,
+                        4566.0
+                    ],
+                    [
+                        1511461800000,
+                        4742.0
+                    ],
+                    [
+                        1511548200000,
+                        4794.0
+                    ],
+                    [
+                        1511634600000,
+                        5211.0
+                    ],
+                    [
+                        1511721000000,
+                        4955.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002WVNm_MME002WVNm/Whole System:MME002WVNm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3419.0
+                    ],
+                    [
+                        1511289000000,
+                        4914.0
+                    ],
+                    [
+                        1511375400000,
+                        4631.0
+                    ],
+                    [
+                        1511461800000,
+                        4825.0
+                    ],
+                    [
+                        1511548200000,
+                        4587.0
+                    ],
+                    [
+                        1511634600000,
+                        4282.0
+                    ],
+                    [
+                        1511721000000,
+                        4685.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001BKTm_MME001BKTm/Whole System:MME001BKTm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        2995.0
+                    ],
+                    [
+                        1511289000000,
+                        4555.0
+                    ],
+                    [
+                        1511375400000,
+                        5243.0
+                    ],
+                    [
+                        1511461800000,
+                        4657.0
+                    ],
+                    [
+                        1511548200000,
+                        4727.0
+                    ],
+                    [
+                        1511634600000,
+                        5057.0
+                    ],
+                    [
+                        1511721000000,
+                        5008.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME501PRSm_MME501PRSm/Whole System:MME501PRSm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3044.0
+                    ],
+                    [
+                        1511289000000,
+                        4949.0
+                    ],
+                    [
+                        1511375400000,
+                        4763.0
+                    ],
+                    [
+                        1511461800000,
+                        5260.0
+                    ],
+                    [
+                        1511548200000,
+                        4822.0
+                    ],
+                    [
+                        1511634600000,
+                        4599.0
+                    ],
+                    [
+                        1511721000000,
+                        4554.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME002LTNm_MME002LTNm/Whole System:MME002LTNm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3122.0
+                    ],
+                    [
+                        1511289000000,
+                        4095.0
+                    ],
+                    [
+                        1511375400000,
+                        4501.0
+                    ],
+                    [
+                        1511461800000,
+                        4687.0
+                    ],
+                    [
+                        1511548200000,
+                        4980.0
+                    ],
+                    [
+                        1511634600000,
+                        4816.0
+                    ],
+                    [
+                        1511721000000,
+                        4644.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001CROm_MME001CROm/Whole System:MME001CROm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3151.0
+                    ],
+                    [
+                        1511289000000,
+                        4384.0
+                    ],
+                    [
+                        1511375400000,
+                        4983.0
+                    ],
+                    [
+                        1511461800000,
+                        4927.0
+                    ],
+                    [
+                        1511548200000,
+                        4567.0
+                    ],
+                    [
+                        1511634600000,
+                        4731.0
+                    ],
+                    [
+                        1511721000000,
+                        4334.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001LDSm_MME001LDSm/Whole System:MME001LDSm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        2752.0
+                    ],
+                    [
+                        1511289000000,
+                        4829.0
+                    ],
+                    [
+                        1511375400000,
+                        4959.0
+                    ],
+                    [
+                        1511461800000,
+                        5029.0
+                    ],
+                    [
+                        1511548200000,
+                        4942.0
+                    ],
+                    [
+                        1511634600000,
+                        4874.0
+                    ],
+                    [
+                        1511721000000,
+                        4984.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001BKTm_MME001BKTm/Whole System:MME001BKTm_SUM_S1 Setup Req",
+                "data": [
+                    [
+                        1511202600000,
+                        3080.0
+                    ],
+                    [
+                        1511289000000,
+                        4901.0
+                    ],
+                    [
+                        1511375400000,
+                        4695.0
+                    ],
+                    [
+                        1511461800000,
+                        4412.0
+                    ],
+                    [
+                        1511548200000,
+                        4749.0
+                    ],
+                    [
+                        1511634600000,
+                        4733.0
+                    ],
+                    [
+                        1511721000000,
+                        4797.0
+                    ]
+                ]
+            },
+            {
+                "name": "MME001MFDm_MME001MFDm/Whole System:MME001MFDm_SUM_eNodeB init S1 Reset Succ",
+                "data": [
+                    [
+                        1511202600000,
+                        3758.0
+                    ],
+                    [
+                        1511289000000,
+                        4871.0
+                    ],
+                    [
+                        1511375400000,
+                        5336.0
+                    ],
+                    [
+                        1511461800000,
+                        4751.0
+                    ],
+                    [
+                        1511548200000,
+                        4362.0
+                    ],
+                    [
+                        1511634600000,
+                        4691.0
+                    ],
+                    [
+                        1511721000000,
+                        4762.0
+                    ]
+                ]
+            }
+        ],
+        "propertyValuesMap": {
+            "SubElementID": [
+                "MME001LTNm/Whole System:MME001LTNm",
+                "MME002LTNm/Whole System:MME002LTNm",
+                "MME001BKTm/Whole System:MME001BKTm",
+                "MME501PRSm/Whole System:MME501PRSm",
+                "MME001LDSm/Whole System:MME001LDSm",
+                "MME002MFDm/Whole System:MME002MFDm",
+                "MME501ENFm/Whole System:MME501ENFm",
+                "MME001MFDm/Whole System:MME001MFDm",
+                "MME001CROm/Whole System:MME001CROm",
+                "MME002WVNm/Whole System:MME002WVNm",
+                "MME002CROm/Whole System:MME002CROm",
+                "MME002LDSm/Whole System:MME002LDSm",
+                "MME002BKTm/Whole System:MME002BKTm",
+                "MME001WVNm/Whole System:MME001WVNm"
+            ],
+            "NodeName": [
+                "MME002LTNm",
+                "MME501ENFm",
+                "MME501PRSm",
+                "MME001WVNm",
+                "MME001MFDm",
+                "MME002LDSm",
+                "MME002CROm",
+                "MME001BKTm",
+                "MME002WVNm",
+                "MME001LTNm",
+                "MME001LDSm",
+                "MME001CROm",
+                "MME002MFDm",
+                "MME002BKTm"
+            ]
+        }
+    }
+}

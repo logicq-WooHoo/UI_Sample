@@ -1,0 +1,53 @@
+[
+  { "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=0, Subrack No.=1"},
+    
+   {  "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=1, Subrack No.=0" },
+    {
+        
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=1, Subrack No.=1"
+        
+    },
+    {
+       
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=10, Subrack No.=0"
+        
+    },
+    {
+        
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=12, Subrack No.=0"
+        
+    },
+    {
+        
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=2, Subrack No.=1"
+        
+    },
+    {
+       
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=3, Subrack No.=0"
+        
+    },
+    {
+       
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=3, Subrack No.=1"
+        
+    },
+    {
+       
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=4, Subrack No.=0"
+        
+    },
+    {
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=4, Subrack No.=1"
+        
+    },
+    {
+       
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=8, Subrack No.=0"
+        
+    },
+    { 
+            "displayName": "MME001CROm/Core:Core ID.=0, Slot No.=8, Subrack No.=1"
+        
+    }
+]

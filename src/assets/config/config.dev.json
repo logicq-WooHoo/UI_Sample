@@ -1,0 +1,7 @@
+{
+    "refreshInterval": 300000,
+    "offset" : 1 ,
+    "baseUrl" : "http://localhost:8080",
+    "druidBaseUrl" : "http://localhost:9999/",
+    "httpRestCall" : true
+}

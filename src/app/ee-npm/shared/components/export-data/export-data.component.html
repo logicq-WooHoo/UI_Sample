@@ -1,0 +1,26 @@
+   <div class="tabHolder custom-form" id="exportReport" modalClickOutside (cleardata)="cleardata($event);">
+                      <h3>Export Report</h3>
+                      <div class="form-group row">
+                        <div class="col-sm-9 dropdown">
+                          <input type="text" class="form-control form-control-no dropdown" required [(ngModel)]="exportType"> 
+                          <span class="bar"></span>
+                          <label>File Type</label>
+                          <span class="add-error hide">File Type<span></span></span>
+                          <div class="drop-items drop-list hide">
+                            <ul>
+                              <li *ngFor="let type of exportFileTypes" (mousedown)="setModalValues(type,$event);">
+                                <span *ngIf="(type == 'CSV')" style="background-image: url(assets/images/csv.png);"></span>
+                                <span *ngIf="(type == 'XLS')" style="background-image: url(assets/images/xls.png);"></span>
+                                <span *ngIf="(type == 'PDF')" style="background-image: url(assets/images/pdf.png);"></span> {{type}}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-9">
+                          <button type="submit" class="btn btn-default closeButton" id="exportReportClose">Cancel</button>
+                          <button type="submit" class="btn  btn-success closeButton" id="exportReportClick" (click)="exportReport()">Export</button>
+                        </div>
+                      </div>
+                    </div>

@@ -1,0 +1,208 @@
+@charset "UTF-8";
+/* CSS Document */
+body { background:#e4e8eb; font-family: 'Roboto Condensed', sans-serif, Arial; font-size:13px; }
+ul, li, outer, a, button { padding:0; margin:0; border:none; outline:none !important; text-decoration:none;}
+
+a {color: #8b58a1; text-decoration:none}
+a:focus{ color: #8b58a1; text-decoration:none}
+	
+@font-face {
+    font-family: 'helvetica_neue_ltlight';
+    src: url(../fonts/HelveticaNeueLT-Light.ttf), 
+		url('../fonts/helvatica45-webfont.woff2') format('woff2'),
+         url('../fonts/helvatica45-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*---------------------Main Page Area------------------------------- */
+#wraper{ height:100%; border-top: 5px solid #4f2660;}
+.page-content{margin-left: 50px;}
+
+.header{height: 60px; background: #fff; border-bottom: 1px solid #e4e8eb; box-shadow: inset 0 3px 6px rgb(206, 206, 206);}
+.logo{padding: 5px 15px 11px 12px;}
+
+
+h4, .h4 {
+    font-size: 18px;
+}
+
+
+/* Label */
+
+.label-default {
+    background-color: #e4e8eb;
+    color: #512862;
+}
+
+/* Alerts */
+.close {
+  text-shadow: 0 1px 0 #000;
+    filter: alpha(opacity=70);
+    opacity: .7;}
+	
+
+/*********** Login page **********/
+
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  background:url(../images/login-main-bg.png) no-repeat bottom left fixed #fff; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.pagewarp{
+	position: relative;
+    z-index: 2;
+    width: 340px;
+	background:#fff; 
+    margin: 10% auto auto auto;
+    border-radius: 3px;
+    padding:28px 0 20px;
+	box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+}
+
+
+.bott-logo{
+	position: relative;
+    width: 360px;
+    margin:40px auto auto auto;
+}
+
+#login-titile{ text-align:center;     margin-bottom: 15px;}
+.form-cont{
+	width: 250px;
+    margin: 0 auto;
+	font-size:14px;
+	color:#333;
+}
+
+.user{ width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    text-align: center;
+    background: none;
+    border-bottom: 1px solid #fff;
+    border: 0;
+    border-bottom: 1px solid #fff; font-size: 14px;
+    color: #333;
+    font-weight: normal;
+}
+
+.user::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #333;
+}
+.user::-moz-placeholder { /* Firefox 19+ */
+  color: #333;
+}
+
+
+.user:focus{border-bottom: 1px solid #CDDC39; outline:none; color:#fff;}
+
+.login-btn{
+	background: #29a65b;
+    width: 100%;
+    font-size: 14px;
+	color:#fff;
+	text-transform: uppercase;
+    margin: 30px 0 5px;
+	padding:9px 0;
+}
+
+.login-btn:hover{
+	background: #156d38;
+	color:#fff;
+}
+
+
+.bott-logo{    text-align: center;}
+
+/* Registration */
+.main-container {
+	margin:20px 5px;
+	padding:20px 22px;
+	background:#fff;
+}
+
+.main-container.tab-container{
+    margin:20px 0;
+    padding:0px 0px;
+	background:none;
+}
+
+
+
+.button-group {
+	margin-top:20px;
+}
+
+.button-group .btn {
+	min-width:100px;
+}
+
+select.form-control:not([size]):not([multiple]) {
+	height:auto;
+}
+
+.form-top {
+	padding-bottom:0;
+}
+
+.form-top h5 {margin-bottom:12px; margin-top:0;}
+.alert-warning {
+	padding:5px 15px;
+}
+
+/* Base for label styling */
+.radiobuttons {
+	list-style:none;
+}
+/* Radio aspect */
+.radioInput input{opacity:0;}
+.radioInput label {    
+    -webkit-appearance:none; 
+    padding:2px 0 0 32px; 
+    display:inline-block; 
+    position:relative; 
+    margin:0 15px 0 0; 
+    vertical-align: sub; 
+    height: 21px;
+    background: url(../images/radio-btn.png) 0 0 no-repeat;
+}
+
+.radioInput input:focus + label{
+    border-color:#ddd;
+}
+.radioInput input:checked + label:after {					
+    content:' '; 
+    width:24px;
+    height: 18px; 
+    border-radius:50px; 
+    position:absolute; 
+    top:0; 
+    text-shadow: 0px; 
+    left: 0;	
+    background: url(../images/radio-btn.png) 0 -24px no-repeat;
+}
+.radioInput label + span{
+    display:inline-block;
+	padding:0 15px 0 0;
+}

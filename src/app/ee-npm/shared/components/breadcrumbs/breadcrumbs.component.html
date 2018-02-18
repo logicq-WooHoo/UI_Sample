@@ -1,0 +1,9 @@
+<div class="fixed-breadcrumb row" *ngIf="breadcrumb && breadcrumb.mainlink  ">           
+    <a class="ee-logo"><img src="./assets/images/ee-logo.png"  alt=""></a>
+    <div class="page-title">
+    <h2>{{breadcrumb.mainlink}}</h2>
+    <span *ngFor="let sub of breadcrumb.sublinks;let last=last;let first=first"><span *ngIf="!first">/</span> 
+             <a *ngIf="!last else span" [routerLink]="last?'null':sub.routing">{{sub.displayName}} </a>
+             <ng-template #span>{{sub.displayName}}</ng-template> </span> 
+    </div>
+    </div>

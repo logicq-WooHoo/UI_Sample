@@ -1,0 +1,321 @@
+[
+   { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": "EPC_CG_10",
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+     { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+     { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+    
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+     { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+     { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+     { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    },
+     { "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic"
+        },
+    {
+        "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface"
+    },
+    {
+        "counterGroupId": 117496839,
+        "displayName": "HWI_MME_SVINTF",
+        "counterGroupDetails": "Sv Interface"
+    },
+    {
+        "counterGroupId": 117490567,
+        "displayName": "HWI_MME_S1PDNDISCN",
+        "counterGroupDetails": "S1 mode PDN disconnection"
+    },
+    {
+        "counterGroupId": 117490520,
+        "displayName": "HWI_MME_S1IAMMETRC",
+        "counterGroupDetails": "S1 mode intra-MME tracking area update"
+    },
+    {
+        "counterGroupId": 117490517,
+        "displayName": "HWI_MME_S6AINTF",
+        "counterGroupDetails": "S6a interface"
+    },
+    {
+        "counterGroupId": 117490524,
+        "displayName": "HWI_MME_S1MODSEC",
+        "counterGroupDetails": "S1 mode security"
+    },
+    {
+        "counterGroupId": 117496534,
+        "displayName": "HWI_MME_SGINTF",
+        "counterGroupDetails": "SGs interface"
+    },
+    {
+        "counterGroupId": 117490525,
+        "displayName": "HWI_MME_S1MODPAG",
+        "counterGroupDetails": "S1 mode paging"
+    }
+]

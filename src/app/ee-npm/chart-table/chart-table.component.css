@@ -1,0 +1,19 @@
+.martop20{
+    margin-top:20px;
+}
+
+
+
+.marBottom40{
+    margin-bottom:40px;
+}
+
+a.disabled{
+    opacity:0.3;
+    cursor:not-allowed;
+}
+
+.lg-chart{
+   height:600px; 
+   width:1000px;
+}

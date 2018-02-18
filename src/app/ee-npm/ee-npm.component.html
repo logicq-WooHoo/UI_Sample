@@ -1,0 +1,13 @@
+
+
+
+
+<app-header></app-header>
+<div id="wrapper" [class.toggled]="toggleClass">
+  <app-menu></app-menu>
+  <div id="page-content-wrapper">
+    <div class="toggle-icon"><a (click)="toggleClassEmit();" id="menu-toggle"></a></div>
+    <router-outlet></router-outlet>
+    <a id="toTop" style="display:none;" (click)="scrolltoTop($event)">Go to Top</a>
+  </div>
+</div>

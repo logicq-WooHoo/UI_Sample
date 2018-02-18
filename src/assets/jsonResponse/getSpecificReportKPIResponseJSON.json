@@ -1,0 +1,40 @@
+{
+    "userTemplateId": null,
+    "reportConfiguration": null,
+    "kpiMetrics":[
+        {
+            "displayName": "KPI1",
+            "unit": "times"
+        },
+         {
+            "displayName": "KPI2",
+            "unit": "times"
+        }
+
+    ],
+    "response": [
+        {
+            "events": [
+                
+                    {
+                        "KPI1": 1,
+                        "KPI2": 79,
+                        "NodeName": "MME001BKTm",
+                        "timestamp": "2017-09-11T20:40:00.000Z"
+                    },
+                    {
+                        "KPI1": 2,
+                        "KPI2": 77,
+                        "NodeName": "MME001BKTm",
+                        "timestamp": "2017-09-11T20:55:00.000Z"
+                    },
+                    {
+                        "KPI1": 98,
+                        "KPI2": 5,
+                        "NodeName": "MME001BKTm",
+                        "timestamp": "2017-09-11T21:10:00.000Z"
+                    }
+                ]
+            }
+    ]
+}

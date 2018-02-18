@@ -1,0 +1,22 @@
+[
+    {
+        "elementID": 16,
+        "elementUserLabel": "UGW001LDS",
+        "vendor": "Huawei",
+        "universe": "EPC-USN",
+        "networkName": "EE",
+        "neVersion": " ",
+        "deviceType": "UGW",
+        "displayName" : "UGW001LDS"
+    },
+    {
+        "elementID": 16,
+        "elementUserLabel": "UGW001LDS",
+        "vendor": "Huawei",
+        "universe": "EPC-USN",
+        "networkName": "EE",
+        "neVersion": " ",
+        "deviceType": "UGW",
+        "displayName" : "UGW001LDS"
+    }
+]

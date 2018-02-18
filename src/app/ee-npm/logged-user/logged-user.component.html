@@ -1,0 +1,22 @@
+<div class="pull-sm-right">
+  <ul class="nav navba3r-nav navbar-right pull-xs-right welcome-text">
+    <li class="nav-item dropdown">
+      <a href="#" class="dropdown-toggle" title="{{fullName}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="avtar"></span>
+          <span class="name-ellipsis">{{fullName}}</span><span class="caret"></span></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/viewprofile"><span class="icon-16 user-profile"></span> View Profile</a>
+        <a class="dropdown-item last-login" href="#">
+          <span>Logged in since:</span>
+          <span>{{lastLoggedIn}}</span>
+            </a>
+        <!--a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a-->
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="doLogout();"><span class="icon-16 user-logout"></span> Logout</a>
+      </div>
+    </li>
+  </ul>
+  <div class="pull-xs-right top-devider"></div>
+
+</div>

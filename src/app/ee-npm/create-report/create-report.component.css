@@ -1,0 +1,26 @@
+.hide{
+    display:none;
+}
+
+.disabled{
+    pointer-events: none;
+    opacity :0.4;
+}
+
+.has-enabled-counters{
+      background-color: #c3e3ff;
+}
+
+.has-enabled-kpis{
+      background-color: #c3e3ff;
+}
+
+.dropdown-overflow-popup{
+    max-height:300px;
+    overflow-y:auto;
+}
+
+virtual-scroll {
+   height: 300px;
+}
+

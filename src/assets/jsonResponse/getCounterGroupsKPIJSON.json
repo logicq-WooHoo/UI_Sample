@@ -1,0 +1,35 @@
+[{
+        "counterGroupId": 117475522,
+        "displayName": "HWI_MME_FRWDBRDTRF",
+        "counterGroupDetails": "Forwarding board traffic",
+        "kpiList" : [{
+                "id":10012,
+                "displayName"  : "KPI name 1",
+                "Unit" : "seconds",
+                "type" : "dynamic"
+        },
+        {
+                "id":10014,
+                "displayName"  : "KPI  testing name 1",
+                "Unit" : "seconds",
+                "type" : "derived"
+        }]
+    },
+    {
+       "counterGroupId": 117490512,
+        "displayName": "HWI_MME_S1INTF",
+        "counterGroupDetails": "S1 interface",
+        "kpiList" : [{
+                "id":10016,
+                "displayName"  : "KPI  1",
+                "Unit" : "seconds",
+                "type" : "dynamic"
+        },
+        {
+                "id":10019,
+                "displayName"  : "KPI test 1",
+                "Unit" : "seconds",
+                "type" : "derived"
+        }]
+    }
+]

@@ -1,0 +1,10 @@
+{
+    "refreshInterval": 300000,
+    "offset" : "Europe/London" ,
+    "baseUrl" : "http://localhost:8080/eenpm",
+    "druidBaseUrl" : "http://localhost:9999/",
+    "httpRestCall" : false,
+    "offsetHours" : 24,
+    "countersAllowedGroupBy" : 5,
+    "propertiesAllowedGroupBy" :2
+}
